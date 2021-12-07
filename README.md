@@ -22,7 +22,7 @@ SNS機能を搭載した飲食店を探すサイトです。またユーザー�
 * おすすめのお店を知りたい時
 
 ## 設計書
-* ER図 <https://drive.google.com/file/d/1UHnafu1uiebTpT369adnCFzRj8YvDFL8/view?usp=sharing>
+[ER図](https://drive.google.com/file/d/1UHnafu1uiebTpT369adnCFzRj8YvDFL8/view?usp=sharing)
 * テーブル定義書
 * 詳細設計書
 ## チャレンジ要素一覧
