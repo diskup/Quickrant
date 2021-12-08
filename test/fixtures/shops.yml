@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  shop_images: MyString
+  tags: MyString
+  tag_maps: MyString
+  reviews: MyString
+  schedules: MyString
+  timelines: MyString
+  image_favorites: MyString
+  timeline_favorites: MyString
+  shop__favorites: MyString
+  fix_requests: MyString
+  relationsips: MyString
+
+two:
+  shop_images: MyString
+  tags: MyString
+  tag_maps: MyString
+  reviews: MyString
+  schedules: MyString
+  timelines: MyString
+  image_favorites: MyString
+  timeline_favorites: MyString
+  shop__favorites: MyString
+  fix_requests: MyString
+  relationsips: MyString
