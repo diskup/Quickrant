@@ -19,17 +19,17 @@ Rails.application.routes.draw do
     resources :shops, except: [:destroy] do
       get 'confirm' => 'shops#confirm'
       resources :images, only: [:new, :create, :destroy] do
-        post 'image_favorites' => 'image_favorites#create', as: 'image_favorites'
-        delete 'image_favorites' => 'image_favorites#destroy', as: 'image_favorite'
+        post 'image_favorites' => 'image_favorites#create', as: 'favorites'
+        delete 'image_favorites' => 'image_favorites#destroy', as: 'favorite'
       end
-      post 'shop_favorites' => 'shop_favorites#create', as: 'shop_favorites'
-      delete 'shop_favorites' => 'shop_favorites#destroy', as: 'shop_favorite'
+      post 'shop_favorites' => 'shop_favorites#create', as: 'favorites'
+      delete 'shop_favorites' => 'shop_favorites#destroy', as: 'favorite'
       resources :reviews, only: [:new, :create, :destroy]
       resources :fix_requests, only: [:new, :create]
     end
     resources :timeline, except: [:edit, :update] do
-      post 'timeline_favorites' => 'timeline_favorites#create', as: 'timeline_favorites'
-      delete 'timeline_favorites' => 'timeline_favorites#destroy', as: 'timeline_favorite'
+      post 'timeline_favorites' => 'timeline_favorites#create', as: 'favorites'
+      delete 'timeline_favorites' => 'timeline_favorites#destroy', as: 'favorite'
 
     end
     resources :schedules, only: [:index, :create, :update, :destroy]
