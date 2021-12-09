@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  # ↓管理者
   devise_for :admin, skip:[:regstrations, :passwords], controllers: {
     sessions: 'admin/sessions'
   }
@@ -8,7 +9,7 @@ Rails.application.routes.draw do
     resources :shops,  only:[:index, :show, :edit, :update]
     resources :fix_requests, only:[:index, :show, :edit, :update]
   end
-
+  # ↓ユーザー
   root to: 'user/homes#top'
   devise_for :users, skip:[:passwords], controllers: {
     registrations: 'user/registrations',
@@ -20,16 +21,16 @@ Rails.application.routes.draw do
       get 'confirm' => 'shops#confirm'
       resources :images, only: [:new, :create, :destroy] do
         post 'image_favorites' => 'image_favorites#create', as: 'favorites'
-        delete 'image_favorites' => 'image_favorites#destroy', as: 'favorite'
+        delete 'image_favorites/:id' => 'image_favorites#destroy', as: 'favorite'
       end
       post 'shop_favorites' => 'shop_favorites#create', as: 'favorites'
-      delete 'shop_favorites' => 'shop_favorites#destroy', as: 'favorite'
+      delete 'shop_favorites/:id' => 'shop_favorites#destroy', as: 'favorite'
       resources :reviews, only: [:new, :create, :destroy]
       resources :fix_requests, only: [:new, :create]
     end
     resources :timeline, except: [:edit, :update] do
       post 'timeline_favorites' => 'timeline_favorites#create', as: 'favorites'
-      delete 'timeline_favorites' => 'timeline_favorites#destroy', as: 'favorite'
+      delete 'timeline_favorites/:id' => 'timeline_favorites#destroy', as: 'favorite'
 
     end
     resources :schedules, only: [:index, :create, :update, :destroy]
