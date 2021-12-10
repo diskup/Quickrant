@@ -138,10 +138,10 @@ ActiveRecord::Schema.define(version: 2021_12_08_085058) do
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
     t.string "nickname", null: false
-    t.string "current_prefectures", null: false
-    t.string "background_image_id", null: false
-    t.string "icon_image_id", null: false
-    t.text "introduction", null: false
+    t.integer "current_prefectures", default: 0, null: false
+    t.string "background_image_id"
+    t.string "icon_image_id"
+    t.text "introduction"
     t.boolean "is_quited", default: false, null: false
     t.boolean "private_account", default: false, null: false
     t.datetime "created_at", null: false

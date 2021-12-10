@@ -1,0 +1,30 @@
+  <h2>新規登録</h2>
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    <table>
+        <tr>
+          <td><%= f.label :current_prefectures, "住まいの都道府県" %></td>
+          <td><%= f.select :current_prefectures, User.prefectures.keys, {} %></td>
+        </tr>
+        <tr>
+          <td><%= f.label :nickname, "ニックネーム"%></td>
+          <td><%= f.text_field :nickname, autofocus: true %></td>
+        <tr>
+          <td><%= f.label :email, "メールアドレス" %></td>
+          <td><%= f.email_field :email, autocomplete: "email" %></td>
+        </tr>
+        <tr>
+          <td><%= f.label :password, "パスワード(#{@minimum_password_length}文字以上)" %></td>
+          <td><%= f.password_field :password, autocomplete: "new-password" %></td>
+        </tr>
+        <tr>
+          <td><%= f.label :password_confirmation, "パスワード(確認用)" %></td>
+          <td><%= f.password_field :password_confirmation, autocomplete: "new-password" %></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td><%= f.submit "新規登録" %></td>
+        </tr>
+      </tbody>
+    </table>
+  <% end %>
+  ログインは<%= link_to 'こちら', new_user_session_path %>から行ってください。
