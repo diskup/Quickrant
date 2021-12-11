@@ -18,7 +18,8 @@ Rails.application.routes.draw do
   scope module: :user do
     get 'search' => 'searches#search', as: 'search'
     resources :shops, except: [:destroy] do
-      get 'confirm' => 'shops#confirm'
+      post 'confirm' => 'shops#confirm'
+      get 'complete' => 'shops#complete'
       resources :images, only: [:new, :create, :destroy] do
         post 'image_favorites' => 'image_favorites#create', as: 'favorites'
         delete 'image_favorites/:id' => 'image_favorites#destroy', as: 'favorite'
