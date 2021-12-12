@@ -1,8 +1,8 @@
 class CreateTimelineFavorites < ActiveRecord::Migration[5.2]
   def change
     create_table :timeline_favorites do |t|
-      t.integer :user_id, null: false
-      t.integer :timeline_id, null: false
+      t.references :timeline, foreign_key: true
+      t.references :user, foreign_key: true
       t.timestamps
     end
   end

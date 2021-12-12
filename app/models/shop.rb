@@ -7,4 +7,5 @@ class Shop < ApplicationRecord
   has_many :shop_favorite, dependent: :destroy
   has_many :timeline, dependent: :destroy
   has_many :tag_maps, dependent: :destroy
+  has_many :tags, through: :tag_maps
 end

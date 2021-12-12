@@ -25,66 +25,78 @@ ActiveRecord::Schema.define(version: 2021_12_08_085058) do
   end
 
   create_table "fix_requests", force: :cascade do |t|
-    t.integer "user_id", null: false
-    t.integer "shop_id", null: false
+    t.integer "shop_id"
+    t.integer "user_id"
     t.integer "fix_status", default: 0, null: false
     t.text "user_message", null: false
+    t.text "admin_mssage", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.text "admin_mssage"
+    t.index ["shop_id"], name: "index_fix_requests_on_shop_id"
+    t.index ["user_id"], name: "index_fix_requests_on_user_id"
   end
 
   create_table "image_favorites", force: :cascade do |t|
-    t.integer "user_id", null: false
-    t.integer "image_id", null: false
+    t.integer "image_id"
+    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["image_id"], name: "index_image_favorites_on_image_id"
+    t.index ["user_id"], name: "index_image_favorites_on_user_id"
   end
 
   create_table "images", force: :cascade do |t|
-    t.integer "user_id", null: false
+    t.integer "user_id"
     t.string "food_image_id", null: false
     t.string "shop_image_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_images_on_user_id"
   end
 
   create_table "relationsips", force: :cascade do |t|
-    t.integer "following_id", null: false
-    t.integer "followed_id", null: false
+    t.integer "following_id"
+    t.integer "followed_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["followed_id"], name: "index_relationsips_on_followed_id"
+    t.index ["following_id"], name: "index_relationsips_on_following_id"
   end
 
   create_table "reviews", force: :cascade do |t|
-    t.integer "shop_id", null: false
-    t.integer "user_id", null: false
+    t.integer "shop_id"
+    t.integer "user_id"
     t.float "value", null: false
     t.text "comment", null: false
     t.integer "about_price", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["shop_id"], name: "index_reviews_on_shop_id"
+    t.index ["user_id"], name: "index_reviews_on_user_id"
   end
 
   create_table "schedules", force: :cascade do |t|
-    t.integer "user_id", null: false
-    t.integer "shop_id", null: false
+    t.integer "shop_id"
+    t.integer "user_id"
     t.integer "schedule_status", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["shop_id"], name: "index_schedules_on_shop_id"
+    t.index ["user_id"], name: "index_schedules_on_user_id"
   end
 
   create_table "shop__favorites", force: :cascade do |t|
-    t.integer "user_id", null: false
-    t.integer "shop_id", null: false
+    t.integer "shop_id"
+    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["shop_id"], name: "index_shop__favorites_on_shop_id"
+    t.index ["user_id"], name: "index_shop__favorites_on_user_id"
   end
 
   create_table "shops", force: :cascade do |t|
-    t.integer "user_id", null: false
+    t.integer "user_id"
     t.string "prefectures", null: false
-    t.string "city", null: false
     t.string "address", null: false
     t.string "name", null: false
     t.string "building_name", null: false
@@ -100,13 +112,16 @@ ActiveRecord::Schema.define(version: 2021_12_08_085058) do
     t.integer "is_active", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_shops_on_user_id"
   end
 
   create_table "tag_maps", force: :cascade do |t|
-    t.integer "shop_id", null: false
-    t.integer "tag_id", null: false
+    t.integer "shop_id"
+    t.integer "tag_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["shop_id"], name: "index_tag_maps_on_shop_id"
+    t.index ["tag_id"], name: "index_tag_maps_on_tag_id"
   end
 
   create_table "tags", force: :cascade do |t|
@@ -116,19 +131,23 @@ ActiveRecord::Schema.define(version: 2021_12_08_085058) do
   end
 
   create_table "timeline_favorites", force: :cascade do |t|
-    t.integer "user_id", null: false
-    t.integer "timeline_id", null: false
+    t.integer "timeline_id"
+    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["timeline_id"], name: "index_timeline_favorites_on_timeline_id"
+    t.index ["user_id"], name: "index_timeline_favorites_on_user_id"
   end
 
   create_table "timelines", force: :cascade do |t|
-    t.integer "user_id", null: false
-    t.integer "shop_id", null: false
+    t.integer "shop_id"
+    t.integer "user_id"
     t.string "post_image_id", null: false
     t.text "description", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["shop_id"], name: "index_timelines_on_shop_id"
+    t.index ["user_id"], name: "index_timelines_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
