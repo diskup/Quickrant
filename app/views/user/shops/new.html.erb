@@ -1,0 +1,32 @@
+<h3>お店登録</h3>
+<%= form_with(model: @shop, url: shops_path, local: true) do |f| %>
+<table>
+  <tr>
+<%= f.label :name, "お店の名前" %>
+<%= f.text_field :name %>>
+<%= f.attachment_field :food_image %>
+<%= f.attachment_field :shop_image %>
+<%= f.label :tag_name, "タグ" %>
+<%= f.text_field :tag_name %>
+<%= f.label :description, "お店の説明" %>
+<%= f.text_field :description %>
+<%= f.label :prefectures, "住所(都道府県)" %>
+<%= f.select :prefectures, User.prefectures.keys, {} %>
+<%= f.label :address, "都道府県以降の住所" %>
+<%= f.text_field :address %>
+<%= f.text_field :building_name, placeholder: "建物名などがあればご記入ください" %>
+<%= f.label :minimum_price, "予算〜" %>
+<%= f.number_field :minimum_price %>
+<%= f.label :max_price, "〜円" %>
+<%= f.number_field :max_price %>
+<%= f.label :phone_number, "お店の電話番号(半角数字ハイフンなし)" %>
+<%= f.number_field :phone_number %>
+営業時間
+<%= f.time_select :start_time %>
+<%= f.time_select :end_time %>
+<%= f.text_field :time_description, placeholder: "営業時間の補足説明" %>
+<%= f.hidden_field :user_id, value: current_user.id %>
+<%= f.hidden_field :is_quited, value: 0 %>
+<% f.submit "登録" %>
+</table>
+<% end %>

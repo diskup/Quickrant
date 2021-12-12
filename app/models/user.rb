@@ -3,15 +3,15 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-  has_many :shop
-  has_many :review, dependent: :destroy
-  has_many :schedule, dependent: :destroy
-  has_many :fix_request, dependent: :destroy
-  has_many :image
-  has_many :timeline, dependent: :destroy
-  has_many :image_favorite, dependent: :destroy
-  has_many :timeline_favorite, dependent: :destroy
-  has_many :shop_favorite, dependent: :destroy
+  has_many :shops
+  has_many :reviews, dependent: :destroy
+  has_many :schedules, dependent: :destroy
+  has_many :fix_requests, dependent: :destroy
+  has_many :images
+  has_many :timelines, dependent: :destroy
+  has_many :image_favorites, dependent: :destroy
+  has_many :timeline_favorites, dependent: :destroy
+  has_many :shop_favorites, dependent: :destroy
   # ↓フォロー機能
   has_many :reverse_of_relationships, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
   has_many :relationships, class_name: "Relationship", foreign_key: "following_id", dependent: :destroy

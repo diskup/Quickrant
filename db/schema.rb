@@ -47,8 +47,8 @@ ActiveRecord::Schema.define(version: 2021_12_08_085058) do
 
   create_table "images", force: :cascade do |t|
     t.integer "user_id"
-    t.string "food_image_id", null: false
-    t.string "shop_image_id", null: false
+    t.string "food_image_id"
+    t.string "shop_image_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_images_on_user_id"
@@ -99,16 +99,16 @@ ActiveRecord::Schema.define(version: 2021_12_08_085058) do
     t.string "prefectures", null: false
     t.string "address", null: false
     t.string "name", null: false
-    t.string "building_name", null: false
+    t.string "building_name"
     t.float "longitude", null: false
     t.float "latitude", null: false
     t.text "description", null: false
     t.integer "minimum_price", null: false
     t.integer "max_price", null: false
     t.integer "phone_number", null: false
-    t.time "start_time", null: false
-    t.time "end_time", null: false
-    t.text "time_description", null: false
+    t.time "start_time"
+    t.time "end_time"
+    t.text "time_description"
     t.integer "is_active", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
