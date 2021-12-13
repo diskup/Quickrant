@@ -5,6 +5,17 @@
       <td>お店の名前</td>
       <td><%= f.text_field :name %></td>
     </tr>
+    <%= f.fields_for :images do |m| %>
+      <tr>
+        <td>商品画像</td>
+        <td><%= m.attachment_field :food_image %></td>
+      </tr>
+      <tr>
+        <td>店舗画像</td>
+        <td><%= m.attachment_field :shop_image %></td>
+      </tr>
+      <%= m.hidden_field :user_id, :value => current_user.id %>
+    <% end %>
     <tr>
       <td>タグ</td>
       <td><%= f.text_field :tag_name %></td>
@@ -40,17 +51,6 @@
       <td><%= f.text_area :time_description, placeholder: "営業時間の補足説明" %></td>
     </tr>
     <%= f.hidden_field :is_active, :value => 0 %>
-    <%= f.fields_for :images do |m| %>
-      <tr>
-        <td>商品画像</td>
-        <td><%= m.attachment_field :food_image %></td>
-      </tr>
-      <tr>
-        <td>店舗画像</td>
-        <td><%= m.attachment_field :shop_image %></td>
-      </tr>
-      <%= m.hidden_field :user_id, :value => current_user.id %>
-    <% end %>
     <tr>
       <td></td>
       <td><%= f.submit "登録" %></td>

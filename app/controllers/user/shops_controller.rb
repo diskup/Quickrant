@@ -14,7 +14,7 @@ class User::ShopsController < ApplicationController
     tag_list = params[:shop][:tag_name].to_s.split(nil)
     @shop.save!
     @shop.save_tag(tag_list)
-    redirect_to request.referer
+    redirect_to shop_path(@shop)
   end
 
   def index
@@ -24,7 +24,7 @@ class User::ShopsController < ApplicationController
 
   def show
     @shop = Shop.find(params[:id])
-    @shop_tags = @shop.tags
+    gon.shop = @shop
   end
 
   private
@@ -42,6 +42,8 @@ class User::ShopsController < ApplicationController
                                  :end_time,
                                  :time_description,
                                  :is_active,
+                                 :latitude,
+                                 :longitude,
                                  images_attributes: [:shop_image,
                                                      :food_image,
                                                      :user_id

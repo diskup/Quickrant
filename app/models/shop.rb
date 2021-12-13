@@ -11,7 +11,9 @@ class Shop < ApplicationRecord
   has_many :timelines, dependent: :destroy
   has_many :tag_maps, dependent: :destroy
   has_many :tags, through: :tag_maps
- 
+
+  geocoded_by :address
+  after_validation :geocode
 
   # タグの保存
   def save_tag(sent_tags)
@@ -28,4 +30,4 @@ class Shop < ApplicationRecord
       self.tags << new_shop_tag
     end
   end
-end 
+end
