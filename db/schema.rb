@@ -46,8 +46,8 @@ ActiveRecord::Schema.define(version: 2021_12_08_085058) do
   end
 
   create_table "images", force: :cascade do |t|
-    t.integer "user_id"
     t.integer "shop_id"
+    t.integer "user_id"
     t.string "food_image_id"
     t.string "shop_image_id"
     t.datetime "created_at", null: false

@@ -2,6 +2,8 @@ class Shop < ApplicationRecord
   belongs_to :user
   has_many :images
   accepts_nested_attributes_for :images, allow_destroy: true
+  attachment :food_image
+  attachment :shop_image
   has_many :fix_requests, dependent: :destroy
   has_many :reviews, dependent: :destroy
   has_many :schedules, dependent: :destroy
@@ -9,8 +11,7 @@ class Shop < ApplicationRecord
   has_many :timelines, dependent: :destroy
   has_many :tag_maps, dependent: :destroy
   has_many :tags, through: :tag_maps
-  attachment :food_image
-  attachment :shop_image
+ 
 
   # タグの保存
   def save_tag(sent_tags)

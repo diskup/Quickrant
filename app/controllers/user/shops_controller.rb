@@ -1,7 +1,6 @@
 class User::ShopsController < ApplicationController
   def new
     @shop = Shop.new
-    @tag_list = Tag.all
     @shop.images.build
   end
 
@@ -13,12 +12,9 @@ class User::ShopsController < ApplicationController
     @shop = Shop.new(shop_params)
     @shop.user_id = current_user.id
     tag_list = params[:shop][:tag_name].to_s.split(nil)
-    if @shop.save
-      @shop.save_tag(tag_list)
-      redirect_to shop_path(@shop)
-    else
-      render :new
-    end
+    @shop.save!
+    @shop.save_tag(tag_list)
+    redirect_to request.referer
   end
 
   def index
@@ -34,6 +30,22 @@ class User::ShopsController < ApplicationController
   private
 
   def shop_params
-    params.require(:shop).permit(:prefectures, :address, :name, :building_name, :description, :minimum_price, :max_price, :phone_number, :start_time, :end_time, :time_description, :is_active)
+    params.require(:shop).permit(:prefectures,
+                                 :address,
+                                 :name,
+                                 :building_name,
+                                 :description,
+                                 :minimum_price,
+                                 :max_price,
+                                 :phone_number,
+                                 :start_time,
+                                 :end_time,
+                                 :time_description,
+                                 :is_active,
+                                 images_attributes: [:shop_image,
+                                                     :food_image,
+                                                     :user_id
+                                                    ]
+                                )
   end
 end
