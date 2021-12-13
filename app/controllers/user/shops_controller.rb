@@ -12,9 +12,12 @@ class User::ShopsController < ApplicationController
     @shop = Shop.new(shop_params)
     @shop.user_id = current_user.id
     tag_list = params[:shop][:tag_name].to_s.split(nil)
-    @shop.save!
-    @shop.save_tag(tag_list)
-    redirect_to shop_path(@shop)
+    if @shop.save
+      @shop.save_tag(tag_list)
+      redirect_to shop_path(@shop)
+    else
+      render :new
+    end
   end
 
   def index
