@@ -47,10 +47,12 @@ ActiveRecord::Schema.define(version: 2021_12_08_085058) do
 
   create_table "images", force: :cascade do |t|
     t.integer "user_id"
+    t.integer "shop_id"
     t.string "food_image_id"
     t.string "shop_image_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["shop_id"], name: "index_images_on_shop_id"
     t.index ["user_id"], name: "index_images_on_user_id"
   end
 
@@ -100,8 +102,8 @@ ActiveRecord::Schema.define(version: 2021_12_08_085058) do
     t.string "address", null: false
     t.string "name", null: false
     t.string "building_name"
-    t.float "longitude", null: false
-    t.float "latitude", null: false
+    t.float "longitude"
+    t.float "latitude"
     t.text "description", null: false
     t.integer "minimum_price", null: false
     t.integer "max_price", null: false

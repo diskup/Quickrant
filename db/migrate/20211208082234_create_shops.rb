@@ -6,8 +6,8 @@ class CreateShops < ActiveRecord::Migration[5.2]
       t.string :address, null: false
       t.string :name, null: false
       t.string :building_name
-      t.float :longitude, null: false
-      t.float :latitude, null: false
+      t.float :longitude
+      t.float :latitude
       t.text :description, null: false
       t.integer :minimum_price, null: false
       t.integer :max_price, null: false
