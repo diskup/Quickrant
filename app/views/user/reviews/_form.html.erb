@@ -23,9 +23,10 @@
     </div>
     <%= f.hidden_field :score, id: "rating-value" %>
     <%= f.text_field :content, class: "textarea" %>
-    <%= f.submit "保存", class: "button mt-3" %>
-    <%= link_to "他のレビューを見る", shop_reviews_path(shop) %>
+    <%= f.submit "投稿", class: "button mt-3" %>
+    <%= link_to "全てのレビュー", shop_reviews_path(shop) %>
   <% end %>
+  
 </div>
 
 <%= javascript_include_tag 'user/reviews.js' %>

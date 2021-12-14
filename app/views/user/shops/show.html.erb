@@ -1,4 +1,24 @@
-<%= render "user/reviews/form", review: @review, shop: @shop %>
-<h4 class="shop-name">店名：<%= @shop.name %></h4>
-<h4 id="address">住所：<%= @shop.prefectures %><%= @shop.address %></h4>
-<%= render "user/shops/map-show" %>
+<div class="container">
+  <div class="row">
+    <div class="col-5 mt-5">
+      <p class="shop-name">店舗名：<%= @shop.name %></p>
+      <p>紹介文：<%= @shop.description %></p>
+      <% unless @shop.start_time.nil? || @shop.end_time.nil? %>
+        <p>営業時間：<%= @shop.start_time.strftime("%H:%M") %>~<%= @shop.end_time.strftime("%H:%M") %></p>
+      <% end %>
+      <p>補足説明：<%= @shop.time_description %> </p>
+      <p>タグ一覧：
+        <% @shop.tags.each do |tag| %>
+          <%= tag.tag_name %>
+        <% end %>
+      </p>
+      <p>予算：一人あたり<%= @shop.minimum_price %>~<%= @shop.max_price %>円</p>
+      <p>電話番号：<%= @shop.phone_number %></p>
+      <p id="address">住所：<%= @shop.prefectures %><%= @shop.address %></p>
+      <%= render "user/reviews/form", review: @review, shop: @shop %>
+    </div>
+    <div class="col-4 mt-5">
+      <%= render "user/shops/map-show" %>
+    </div>
+  </div>
+</div>

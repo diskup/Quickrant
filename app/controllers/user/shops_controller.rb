@@ -2,7 +2,6 @@ class User::ShopsController < ApplicationController
   def new
     @shop = Shop.new
     @shop.images.build
-    @review = @review.new
   end
 
   def confirm
