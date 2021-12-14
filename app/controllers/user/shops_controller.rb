@@ -2,6 +2,7 @@ class User::ShopsController < ApplicationController
   def new
     @shop = Shop.new
     @shop.images.build
+    @review = @review.new
   end
 
   def confirm
@@ -27,7 +28,7 @@ class User::ShopsController < ApplicationController
 
   def show
     @shop = Shop.find(params[:id])
-    gon.shop = @shop
+    @review = Review.new
   end
 
   private

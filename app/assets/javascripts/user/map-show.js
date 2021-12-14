@@ -1,4 +1,3 @@
-function initMap() {
   //地図を表示する領域の div 要素のオブジェクトを変数に代入
   const target = document.getElementById('map');
   //マーカーのタイトルを設定
@@ -42,4 +41,3 @@ function initMap() {
       return;
     }
   });
-}

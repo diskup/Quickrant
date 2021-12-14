@@ -7,7 +7,7 @@
     </tr>
     <%= f.fields_for :images do |m| %>
       <tr>
-        <td>商品画像</td>
+        <td>料理画像</td>
         <td><%= m.attachment_field :food_image %></td>
       </tr>
       <tr>
@@ -40,7 +40,7 @@
     </tr>
     <tr>
       <td>お店の電話番号</td>
-      <td><%= f.number_field :phone_number %></td>
+      <td><%= f.text_field :phone_number %></td>
     </tr>
     <tr>
       <td>営業時間</td>

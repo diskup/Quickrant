@@ -26,7 +26,7 @@ Rails.application.routes.draw do
       end
       post 'shop_favorites' => 'shop_favorites#create', as: 'favorites'
       delete 'shop_favorites/:id' => 'shop_favorites#destroy', as: 'favorite'
-      resources :reviews, only: [:new, :create, :destroy]
+      resources :reviews, only: [:new, :index, :create, :destroy]
       resources :fix_requests, only: [:new, :create]
     end
     resources :timeline, except: [:edit, :update] do

@@ -68,9 +68,8 @@ ActiveRecord::Schema.define(version: 2021_12_08_085058) do
   create_table "reviews", force: :cascade do |t|
     t.integer "shop_id"
     t.integer "user_id"
-    t.float "value", null: false
-    t.text "comment", null: false
-    t.integer "about_price", null: false
+    t.float "score", null: false
+    t.text "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["shop_id"], name: "index_reviews_on_shop_id"
@@ -107,7 +106,7 @@ ActiveRecord::Schema.define(version: 2021_12_08_085058) do
     t.text "description", null: false
     t.integer "minimum_price", null: false
     t.integer "max_price", null: false
-    t.integer "phone_number", null: false
+    t.string "phone_number", null: false
     t.time "start_time"
     t.time "end_time"
     t.text "time_description"

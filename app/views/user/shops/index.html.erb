@@ -1,0 +1,15 @@
+<div class="container">
+  <div class="row">
+    <div class="shop-info mx-auto">
+      <% @shops.each do |shop| %>
+        <%= link_to shop.name, shop_path(shop) %>
+        <% shop.images.first(1).each do |image| %>
+          <div class="m-3">
+            <%= attachment_image_tag(image, :food_image, size: '200x200') %>
+            <%= attachment_image_tag(image, :shop_image, size: '200x200') %>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>

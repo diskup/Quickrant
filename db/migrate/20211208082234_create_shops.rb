@@ -11,7 +11,7 @@ class CreateShops < ActiveRecord::Migration[5.2]
       t.text :description, null: false
       t.integer :minimum_price, null: false
       t.integer :max_price, null: false
-      t.integer :phone_number, null: false
+      t.string :phone_number, null: false
       t.time :start_time
       t.time :end_time
       t.text :time_description
