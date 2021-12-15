@@ -20,10 +20,7 @@ Rails.application.routes.draw do
     resources :shops, except: [:destroy] do
       post 'confirm' => 'shops#confirm'
       get 'complete' => 'shops#complete'
-      resources :images, only: [:new, :create, :destroy] do
-        post 'image_favorites' => 'image_favorites#create', as: 'favorites'
-        delete 'image_favorites/:id' => 'image_favorites#destroy', as: 'favorite'
-      end
+      resources :images, only: [:new, :create, :destroy] 
       post 'shop_favorites' => 'shop_favorites#create', as: 'favorites'
       delete 'shop_favorites/:id' => 'shop_favorites#destroy', as: 'favorite'
       resources :reviews, only: [:new, :index, :create, :destroy]

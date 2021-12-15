@@ -8,3 +8,13 @@
 <%= link_to "ログアウト",destroy_admin_session_path,method: :delete %>
 <% end %>
 <%= link_to "お店登録", new_shop_path %>
+<%= form_with url: search_path, :method => 'get' do |f| %>
+
+    <%= f.text_field :location, placeholder: "住所や行きたい場所を入力してください。" %>
+    <%= f.select :keyword, [
+      ['距離が近い順', 'near']
+    ] %>
+    <%= f.submit '検索', class: "button p-2" %>
+  <% end %>
+  <button id="get_current_spot" type="button" class="button">現在地取得</button>
+<%= javascript_include_tag 'user/homes.js' %>

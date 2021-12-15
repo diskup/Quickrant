@@ -24,3 +24,13 @@
   background-image: linear-gradient(to right, #f83600 0%, #f9d423 100%);
   font-family: serif;
 }
+.background-image{
+ margin: 0 auto;
+ position: relative;
+}
+.icon-image{
+ position: absolute;
+ left: 225px;
+ top: 200px;
+ color: black;
+}

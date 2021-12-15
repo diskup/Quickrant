@@ -31,7 +31,7 @@ class Shop < ApplicationRecord
     end
   end
   # 評価の平均
-   def avg_score
+  def avg_score
     unless self.reviews.empty?
       reviews.average(:score).round(1).to_f
     else
@@ -46,4 +46,14 @@ class Shop < ApplicationRecord
       0.0
     end
   end
+
+  class << self
+    def within_box(distance, latitude, longitude)
+      distance = distance
+      center_point = [latitude, longitude]
+      box = Geocoder::Calculations.bounding_box(center_point, distance)
+      self.within_bounding_box(box)
+    end
+  end
+
 end

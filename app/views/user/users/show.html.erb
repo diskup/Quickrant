@@ -1,5 +1,16 @@
-<div>
-  class
+<div class="container">
+  <div class="row">
+    <div class="background-image">
+      <%= attachment_image_tag(@user, :background_image, size: '550x250', fallback: "no-image-back.png") %>
+      <div class="icon-image text-center">
+        <%= attachment_image_tag(@user, :icon_image, size: '100x100', fallback: "no-image.png", class:"rounded-circle border") %>
+        <br><%= @user.nickname %>
+        <br><%= @user.introduction %>
+      </div>
+    </div>
+  </div>
+  
+  <div class="row">
+    
+  </div>
 </div>
-<%= @user.nickname %>
-<%= @user.introduction %>

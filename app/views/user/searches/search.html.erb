@@ -1,0 +1,9 @@
+<div class="flex flex-wrap justify-between w-11/12 mx-auto">
+    <% if @shops.any? %>
+      <% @shops.each do |shop| %>
+        <%= link_to shop.name, shop_path(shop) %>
+      <% end %>
+    <% else %>
+      <p class="mx-auto">検索結果は見つかりませんでした。</p>
+    <% end %>
+ </div>
