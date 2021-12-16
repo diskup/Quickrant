@@ -14,6 +14,8 @@ class Shop < ApplicationRecord
 
   geocoded_by :address
   after_validation :geocode
+  acts_as_mappable :lat_column_name => :latitude,
+                   :lng_column_name => :longitude
 
   # タグの保存
   def save_tag(sent_tags)
@@ -30,6 +32,7 @@ class Shop < ApplicationRecord
       self.tags << new_shop_tag
     end
   end
+
   # 評価の平均
   def avg_score
     unless self.reviews.empty?
@@ -38,21 +41,18 @@ class Shop < ApplicationRecord
       0.0
     end
   end
+
+  # 平均価格
+  def avg_price
+    (max_price + minimum_price) / 2
+  end
+
   # 評価のパーセンテージ
   def review_score_percentage
     unless self.reviews.empty?
       reviews.average(:score).round(1).to_f*100/5
     else
       0.0
-    end
-  end
-
-  class << self
-    def within_box(distance, latitude, longitude)
-      distance = distance
-      center_point = [latitude, longitude]
-      box = Geocoder::Calculations.bounding_box(center_point, distance)
-      self.within_bounding_box(box)
     end
   end
 
