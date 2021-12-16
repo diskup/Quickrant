@@ -13,24 +13,33 @@
  *= require_tree .
  *= require_self
  */
+
+ // 地図
  @import "bootstrap";
  #map {
   height: 400px;
   width: 600px;
  }
+ // 全体
  body {
   min-height: 100vh;
   color: white;
   background-image: linear-gradient(to right, #f83600 0%, #f9d423 100%);
   font-family: serif;
+
+  // マイページ
 }
 .background-image{
- margin: 0 auto;
  position: relative;
 }
 .icon-image{
  position: absolute;
  left: 225px;
- top: 200px;
+ top: 250px;
  color: black;
+}
+
+// お店
+.shop-info{
+ padding: 10px;
 }

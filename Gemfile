@@ -71,3 +71,6 @@ gem 'geokit-rails', '~> 2.0', '>= 2.0.1'
 gem 'geocoder'
 gem 'gon'
 gem 'dotenv-rails'
+group :production do
+  gem 'mysql2'
+end
