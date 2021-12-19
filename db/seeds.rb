@@ -9,12 +9,14 @@ Admin.create(
   email: 'admin@admin.com',
   password: 'quickrant'
   )
-User.create(
-  nickname: 'a',
-  email: 'a@a',
-  password: 'aaaaaaaa',
-  current_prefectures: 1
-  )
+for i in 1..10 do
+  User.create(
+    nickname: "a#{i}",
+    email: "a#{i}@a",
+    password: "aaaaaaa#{i}",
+    current_prefectures: 1
+    )
+end 
 for i in 1..10 do
   Shop.create(
     [

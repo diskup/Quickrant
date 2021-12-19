@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_08_085058) do
+ActiveRecord::Schema.define(version: 2021_12_18_073947) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -22,18 +22,6 @@ ActiveRecord::Schema.define(version: 2021_12_08_085058) do
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_admins_on_email", unique: true
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
-  end
-
-  create_table "fix_requests", force: :cascade do |t|
-    t.integer "shop_id"
-    t.integer "user_id"
-    t.integer "fix_status", default: 0, null: false
-    t.text "user_message", null: false
-    t.text "admin_mssage", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["shop_id"], name: "index_fix_requests_on_shop_id"
-    t.index ["user_id"], name: "index_fix_requests_on_user_id"
   end
 
   create_table "image_favorites", force: :cascade do |t|
@@ -56,13 +44,13 @@ ActiveRecord::Schema.define(version: 2021_12_08_085058) do
     t.index ["user_id"], name: "index_images_on_user_id"
   end
 
-  create_table "relationsips", force: :cascade do |t|
+  create_table "relationships", force: :cascade do |t|
     t.integer "following_id"
     t.integer "followed_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["followed_id"], name: "index_relationsips_on_followed_id"
-    t.index ["following_id"], name: "index_relationsips_on_following_id"
+    t.index ["followed_id"], name: "index_relationships_on_followed_id"
+    t.index ["following_id"], name: "index_relationships_on_following_id"
   end
 
   create_table "reviews", force: :cascade do |t|
@@ -74,16 +62,6 @@ ActiveRecord::Schema.define(version: 2021_12_08_085058) do
     t.datetime "updated_at", null: false
     t.index ["shop_id"], name: "index_reviews_on_shop_id"
     t.index ["user_id"], name: "index_reviews_on_user_id"
-  end
-
-  create_table "schedules", force: :cascade do |t|
-    t.integer "shop_id"
-    t.integer "user_id"
-    t.integer "schedule_status", default: 0, null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["shop_id"], name: "index_schedules_on_shop_id"
-    t.index ["user_id"], name: "index_schedules_on_user_id"
   end
 
   create_table "shop__favorites", force: :cascade do |t|
@@ -144,7 +122,7 @@ ActiveRecord::Schema.define(version: 2021_12_08_085058) do
     t.integer "shop_id"
     t.integer "user_id"
     t.string "post_image_id", null: false
-    t.text "description", null: false
+    t.text "content", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["shop_id"], name: "index_timelines_on_shop_id"

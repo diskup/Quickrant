@@ -9,6 +9,10 @@
         </thead>
         <tbody>
           <% @reviews.each do |review| %>
+          
+          <%= link_to hoge-image, "data-lightbox": hoge-image do %>
+          <%= image_tag hoge-image, class:"img"%>
+          <% end %>
             <tr>
               <td><%= attachment_image_tag(review.user, :icon_image, size: '50x50', fallback: "no-image.png") %></td>
               <td><%= review.user.nickname %></td>

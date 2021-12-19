@@ -1,6 +1,6 @@
-<div class="container">
-  <div class="row">
-    <div class="col-5 mt-5">
+<div class='container'>
+  <div class='row'>
+    <div class="mt-5">
       <p class="shop-name">店舗名：<%= @shop.name %></p>
       <p>紹介文：<%= @shop.description %></p>
       <% unless @shop.start_time.nil? || @shop.end_time.nil? %>
@@ -16,8 +16,9 @@
       <p>電話番号：<%= @shop.phone_number %></p>
       <p id="address">住所：<%= @shop.prefectures %><%= @shop.address %></p>
       <%= render "user/reviews/form", review: @review, shop: @shop %>
+      <5
     </div>
-    <div class="col-4 mt-5">
+    <div class="col-sm-12 col-md-4 mt-5">
       <%= render "user/shops/map-show" %>
     </div>
   </div>

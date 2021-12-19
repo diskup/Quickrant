@@ -1,4 +1,4 @@
-<div class="flex flex-wrap justify-between w-11/12 mx-auto">
+<div class="flex flex-wrap justify-between mx-auto">
     <% if @shops.any? %>
       <% @shops.each do |shop| %>
         <%= link_to shop.name, shop_path(shop) %>

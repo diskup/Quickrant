@@ -8,29 +8,19 @@ class User < ApplicationRecord
   has_many :shops
   has_many :images
   has_many :reviews, dependent: :destroy
-  has_many :schedules, dependent: :destroy
-  has_many :fix_requests, dependent: :destroy
   has_many :timelines, dependent: :destroy
-  has_many :image_favorites, dependent: :destroy
   has_many :timeline_favorites, dependent: :destroy
   has_many :shop_favorites, dependent: :destroy
   # ↓フォロー機能
   has_many :reverse_of_relationships, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
   has_many :relationships, class_name: "Relationship", foreign_key: "following_id", dependent: :destroy
-  has_many :followings, through: :reverse_of_relationships, source: :following
   has_many :followings, through: :relationships, source: :followed
+  has_many :followeds, through: :reverse_of_relationships, source: :following
 
-  def follow(user_id)
-    relationships.create(followed_id: user_id)
+  def is_followed_by?(user)
+    reverse_of_relationships.find_by(following_id: user.id).present?
   end
 
-  def unfollow(user_id)
-    relationships.find_by(followed_id: user_id).destroy
-  end
-
-  def following?(user)
-    followings.include?(user)
-  end
   enum prefectures:{
      "選択してください":0,
      北海道:1,青森県:2,岩手県:3,宮城県:4,秋田県:5,山形県:6,福島県:7,

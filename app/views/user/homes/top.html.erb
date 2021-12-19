@@ -1,19 +1,9 @@
-<%= link_to "新規登録", new_user_registration_path %>
-<%= link_to "管理者", new_admin_session_path %>
-<% if user_signed_in? %>
-<%= link_to "ログアウト",destroy_user_session_path,method: :delete %>
-<%= link_to "マイページ", user_path(current_user) %>
-<% end %>
-<% if admin_signed_in? %>
-<%= link_to "ログアウト",destroy_admin_session_path,method: :delete %>
-<% end %>
-<%= link_to "お店登録", new_shop_path %>
 
 <%= form_with url: search_path, method: :get, local: true do |f| %>
-    <%= f.text_field :location, :size=>"50", placeholder: "住所や場所名を入力してください。(例：東京タワー)" %>
-    から半径<%= f.select :distance, *[1..30] %>km以内
-    優先順位：<%= f.select :sort, ["評価が良い", "価格が安い"] %>を優先
-    <%= f.submit '検索' %>
-  <% end %>
-  <button id="get_current_shop" type="button" class="button">現在地取得</button>
+  <%= f.text_field :location, :size=>"50", placeholder: "住所や場所名を入力してください。(例：東京タワー)" %>
+  から半径<%= f.select :distance, *[1..30] %>km以内
+  優先順位：<%= f.select :sort, ["評価が良い", "価格が安い"] %>を優先
+  <%= f.submit '検索' %>
+<% end %>
+<button id="get_current_shop" type="button" class="button">現在地取得</button>
 <%= javascript_include_tag 'user/searches.js' %>

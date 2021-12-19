@@ -13,3 +13,17 @@
     </div>
   </div>
 </div>
+
+<%= @user.followeds.count %>
+<%= @user.followings.count %>
+<% unless @user == current_user %>
+  <% if @user.is_followed_by?(current_user) %>
+    <%= link_to user_relationships_path(@user), method: :delete do %>
+      <button class="btn btn-info">フォロー外す</button>
+    <% end %>
+  <% else %>
+    <%= link_to user_relationships_path(@user), method: :post do %>
+      <button class="btn btn-success">フォローする</button>
+    <% end%>
+  <% end %>
+<% end %>
