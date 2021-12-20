@@ -10,7 +10,7 @@ const geocoder = new google.maps.Geocoder();
 //geocoder.geocode() にアドレスを渡して、コールバック関数を記述して処理
 geocoder.geocode({ address: inputAddress }, function(results, status){
 //ステータスが OK で results[0] が存在すれば、地図を生成
-  if (status === 'OK' && results[0]){
+  if (status == 'OK' && results[0]){
     //マップのインスタンスを変数に代入
     const map = new google.maps.Map(target, {
     //results[0].geometry.location に緯度・経度のオブジェクトが入っている
@@ -27,7 +27,7 @@ geocoder.geocode({ address: inputAddress }, function(results, status){
     //情報ウィンドウに表示するコンテンツを作成
     const content = '<div id="map_content"><p>' + title + '<br/>' + inputAddress + '<br/><a href="https://maps.google.co.jp/maps?q=' + latlng + '&iwloc=J" target="_blank" rel="noopener noreferrer">Googleマップで見る</a></p></div>';
     //情報ウィンドウのインスタンスを生成
-    var infowindow = new google.maps.InfoWindow({
+    const infowindow = new google.maps.InfoWindow({
       content: content,
     });
     //marker をクリックすると情報ウィンドウを表示(リスナーの登録）
