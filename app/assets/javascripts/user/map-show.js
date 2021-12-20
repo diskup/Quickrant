@@ -10,7 +10,7 @@ const geocoder = new google.maps.Geocoder();
 //geocoder.geocode() にアドレスを渡して、コールバック関数を記述して処理
 geocoder.geocode({ address: inputAddress }, function(results, status){
 //ステータスが OK で results[0] が存在すれば、地図を生成
-  if (status == 'OK' && results[0]){
+  if (status === 'OK' && results[0]){
     //マップのインスタンスを変数に代入
     const map = new google.maps.Map(target, {
     //results[0].geometry.location に緯度・経度のオブジェクトが入っている

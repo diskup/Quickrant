@@ -6,12 +6,12 @@ function geoFindMe() {
     const latLngInput = new google.maps.LatLng(latitude, longitude);
     const geocoder = new google.maps.Geocoder();
     geocoder.geocode({ latLng: latLngInput }, function(results, status) {
-      let address = "";
+      let address = '';
       if (status == 'OK' && results[0]) {
         address = results[0].formatted_address;
         address = address.slice(3)
       } else {
-          alert("住所から位置の取得ができませんでした。: " + status);
+          alert('住所から位置の取得ができませんでした。: ' + status);
           return;
         }
       document.getElementById('location').value = address;

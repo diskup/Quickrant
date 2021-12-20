@@ -16,10 +16,7 @@
 
  // 地図
  @import "bootstrap";
- #map {
-  height: 400px;
-  width: 600px;
- }
+
  // 全体
  body {
   min-height: 100vh;
@@ -43,3 +40,9 @@
 .shop-info{
  padding: 10px;
 }
+// 地図
+ #map {
+  height: 400px;
+  width: 600px;
+  color:black
+ }
