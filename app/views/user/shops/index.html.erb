@@ -3,7 +3,7 @@
     <div class="mx-auto">
       <% @shops.each do |shop| %>
         <% shop.images.first(1).each do |image| %>
-          <div class="shop-info">
+          <div class="shop-image">
             <%= link_to shop.name, shop_path(shop) %>
             <%= attachment_image_tag(image, :food_image, size: '200x200') %>
             <%= attachment_image_tag(image, :shop_image, size: '200x200') %>

@@ -1,30 +1,45 @@
-<p class="mb-3">レビューを書く</p>
-<% if review.errors.any? %>
-  <div class="notification is-danger">
-    <h2><%= review.errors.count %>件のエラーがあります。</h2>
-    <ul>
-      <% review.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-    </ul>
-  </div>
-<% end %>
-<div class="rating-box mt-3">
-  <%= form_with model: review, url: shop_reviews_path(shop), local: true do |f| %>
-    <div class="main-rating">
-      <div class="ratings mb-3" id="ratings">
-        <span class="fa fa-star-o" id="star"></span>
-        <span class="fa fa-star-o" id="star"></span>
-        <span class="fa fa-star-o" id="star"></span>
-        <span class="fa fa-star-o" id="star"></span>
-        <span class="fa fa-star-o" id="star"></span>
-      </div>
-      <div class="ml-3 rating-value-display"><span id="rating-value-display">0</span>/5</div>
+<div class="col-4">
+  <div class="review">
+    <div class="card-header">
+      <%= @shop.name %>
     </div>
-    <%= f.hidden_field :score, id: "rating-value" %>
-    <%= f.text_field :content, class: "textarea" %>
-    <%= f.submit "投稿", class: "button mt-3" %>
-    <%= link_to "全てのレビュー", shop_reviews_path(shop) %>
-  <% end %>
+      <div class="average-score">
+        <div class="star-rating">
+          <div class="star-rating-front" style="width: <%= @shop.review_score_percentage %>%">★★★★★</div>
+          <div class="star-rating-back">★★★★★</div>
+        </div>
+        <div class="average-score-display ml-3 pt-2">
+          <%= @shop.avg_score %>点（<%= @shop.reviews.count %>件のレビュー）
+        </div>
+      </div>
+    <div class="card-footer">
+      <%= link_to 'レビューを見る', shop_reviews_path(@shop), class: "mr-3"%>
+      <%= link_to 'レビューを書く', shop_path(@shop), class: "ml-3 js-modal-open"%>
+    </div>
+  </div>
+</div>
+<div class="modal js-modal">
+  <div class="modal__bg">
+    <div class="modal__content">
+      <button class="js-modal-close close-button">×</button>
+      <div class="rating-box mt-3">
+        <%= form_with model: review, url: shop_reviews_path(shop), local: true do |f| %>
+          <div class="main-rating">
+            <div class="ratings mb-3" id="ratings">
+              <span class="fa fa-star-o" id="star"></span>
+              <span class="fa fa-star-o" id="star"></span>
+              <span class="fa fa-star-o" id="star"></span>
+              <span class="fa fa-star-o" id="star"></span>
+              <span class="fa fa-star-o" id="star"></span>
+            </div>
+            <div class="ml-3 rating-value-display"><span id="rating-value-display">0</span>/5</div>
+          </div>
+          <%= f.hidden_field :score, id: "rating-value" %>
+          <%= f.text_area :content, class: "textarea form-control", placeholder: "コメントを書いてください。"%>
+          <%= f.submit "投稿", class: "button mt-3" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
 </div>
 <%= javascript_include_tag 'user/reviews.js' %>

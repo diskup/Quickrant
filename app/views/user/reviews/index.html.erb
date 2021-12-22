@@ -1,23 +1,24 @@
-<div class="container">
-  <div class="row">
-    <div class="mx-auto">
-      <table class="table">
-        <thead>
-          <tr>
-            <th>ユーザー</th><th></th><th>点数</th><th>コメント</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @reviews.each do |review| %>
-            <tr>
-              <td><%= attachment_image_tag(review.user, :icon_image, size: '50x50', fallback: "no-image.png") %></td>
-              <td><%= review.user.nickname %></td>
-              <td><%= review.score %></td>
-              <td><%= review.content %></td>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
+<div class="col-4">
+  <div class="review">
+    <div class="card-header">
+      <%= @shop.name %>
+    </div>
+      <div class="average-score">
+        <div class="star-rating">
+          <div class="star-rating-front" style="width: <%= @shop.review_score_percentage %>%">★★★★★</div>
+          <div class="star-rating-back">★★★★★</div>
+        </div>
+        <div class="average-score-display ml-3 pt-2">
+          <%= @shop.avg_score %>点（<%= @shop.reviews.count %>件のレビュー）
+        </div>
+      </div>
+    <div class="card-footer">
+      <%= link_to shop_reviews_path(@shop), class: "button mr-3" do %>
+        レビューを見る
+      <% end %>
+      <%= link_to shop_path(@shop), class: "button ml-3" do %>
+        レビューを書く
+      <% end %>
     </div>
   </div>
 </div>

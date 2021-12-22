@@ -16,6 +16,12 @@
 
  // 地図
  @import "bootstrap";
+* {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  box-sizing: border-box;
+}
 
  // 全体
  body {
@@ -26,23 +32,109 @@
 
   // マイページ
 }
-.background-image{
- position: relative;
+.background-image {
+  position: relative;
 }
-.icon-image{
- position: absolute;
- left: 225px;
- top: 250px;
- color: black;
+.icon-image {
+  position: absolute;
+  left: 225px;
+  top: 250px;
+  color: black;
 }
 
 // お店
-.shop-info{
- padding: 10px;
+.shop-info {
+  display: flex;
+}
+
+.detail {
+ width: 400px;
+ display: flex;
+}
+.text {
+ width: 40%;
+ word-break: break-all;
+}
+.shop-image {
+  padding: 10px;
+  display: flex;
 }
 // 地図
- #map {
+#map {
   height: 400px;
   width: 600px;
   color:black
- }
+}
+ // レビュー部分
+.review {
+  color: black;
+  background-color: white;
+}
+
+.star-rating {
+  position: relative;
+  width: 5em;
+  height: 1em;
+  font-size: 25px;
+}
+.star-rating-front {
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  color: #ffcc33;
+}
+.star-rating-back {
+  color: #ccc;
+}
+
+.average-score {
+  display: flex;
+}
+.average-score-display {
+  font-size: 16px;
+}
+
+.rating-box .ratings .fa{
+  font-size: 30px;
+  color:#ffcc00;
+  cursor: pointer;
+}
+
+.main-rating {
+  display: flex;
+}
+
+.rating-value-display {
+  font-size: 20px;
+}
+
+ // モーダルウィンドウ
+.modal {
+  display: none;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+.modal__bg {
+  background: rgba(0,0,0,0.8);
+  height: 100vh;
+  position: absolute;
+  width: 100%;
+}
+.modal__content {
+  background: #fff;
+  left: 50%;
+  padding: 40px;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%,-50%);
+  width: 25%;
+}
+.close-button {
+  position: absolute;
+  right: 1rem;
+  top: 1rem;
+}
