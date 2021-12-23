@@ -43,6 +43,9 @@
         </div>
       </div>
       <%= render "user/reviews/form", review: @review, shop: @shop %>
+      <div id="favorite_buttons_<%= @shop.id %>">
+        <%= render "user/favorites/favorite", shop: @shop %>
+      </div>
     </div>
     <div class="col-12">
       <% @shop.images.first(1).each do |image| %>

@@ -1,15 +1,21 @@
+  <div class='container'>
+  <div class='row'>
+    <div class="mx-auto mt-5">
   <h2>ログイン</h2>
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-    <div>
+    <div class="form-group">
       <%= f.label :email, "メールアドレス" %><br>
-      <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
     </div>
-    <div>
+    <div class="form-group">
       <%= f.label :password, "パスワード" %><br>
-      <%= f.password_field :password, autocomplete: "current-password" %>
+      <%= f.password_field :password, autocomplete: "current-password", class: "form-control" %>
     </div>
-    <div>
-      <%= f.submit "ログイン" %>
+    <div class="form-group">
+      <%= f.submit "ログイン", class: 'btn btn-secondary' %>
     </div>
   <% end %>
   新規登録は<%= link_to "こちら", new_user_registration_path %>から行なってください
+    </div>
+</div>
+</div>

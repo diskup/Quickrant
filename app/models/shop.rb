@@ -7,7 +7,7 @@ class Shop < ApplicationRecord
   has_many :fix_requests, dependent: :destroy
   has_many :reviews, dependent: :destroy
   has_many :schedules, dependent: :destroy
-  has_many :shop_favorites, dependent: :destroy
+  has_many :favorites, dependent: :destroy
   has_many :timelines, dependent: :destroy
   has_many :tag_maps, dependent: :destroy
   has_many :tags, through: :tag_maps
@@ -55,5 +55,11 @@ class Shop < ApplicationRecord
       0.0
     end
   end
-
+  # お気に入り
+  def is_favorited_by?(user)
+    favorites.find_by(user_id: user.id).present?
+  end
+  # def is_followed_by?(user)
+  #   reverse_of_relationships.find_by(following_id: user.id).present?
+  # end
 end

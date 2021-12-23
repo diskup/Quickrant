@@ -1,60 +1,60 @@
-<h3>お店登録</h3>
-<%= form_with model: @shop, url: shops_path, local: true do |f| %>
-  <table>
-    <tr>
-      <td>お店の名前</td>
-      <td><%= f.text_field :name %></td>
-    </tr>
-    <%= f.fields_for :images do |m| %>
-      <tr>
-        <td>料理画像</td>
-        <td><%= m.attachment_field :food_image %></td>
-      </tr>
-      <tr>
-        <td>店舗画像</td>
-        <td><%= m.attachment_field :shop_image %></td>
-      </tr>
-      <%= m.hidden_field :user_id, :value => current_user.id %>
-    <% end %>
-    <tr>
-      <td>タグ</td>
-      <td><%= f.text_field :tag_name %></td>
-    </tr>
-    <tr>
-      <td>お店の説明</td>
-      <td><%= f.text_area :description %></td>
-    </tr>
-    <tr>
-      <td>住所(都道府県)</td>
-      <td><%= f.select :prefectures, User.prefectures.keys, {} %></td>
-    </tr>
-    <tr>
-      <td>以降の住所(建物名)</td>
-      <td>
-        <%= f.text_field :address %>　<%= f.text_field :building_name, placeholder: "建物名がある場合ここに記入" %>
-      </td>
-
-    <tr>
-      <td>予算</td>
-      <td><%= f.number_field :minimum_price %>〜<%= f.number_field :max_price %>円</td>
-    </tr>
-    <tr>
-      <td>お店の電話番号</td>
-      <td><%= f.text_field :phone_number %></td>
-    </tr>
-    <tr>
-      <td>営業時間</td>
-      <td><%= f.time_select :start_time %>〜<%= f.time_select :end_time %></td>
-    </tr>
-    <tr>
-      <td>補足説明</td>
-      <td><%= f.text_area :time_description, placeholder: "営業時間の補足説明" %></td>
-    </tr>
-    <%= f.hidden_field :is_active, :value => 0 %>
-    <tr>
-      <td></td>
-      <td><%= f.submit "登録" %></td>
-    </tr>
-  </table>
-
-<% end %>
+<div class='container'>
+  <div class='row'>
+    <div class="mx-auto mt-5">
+      <%= form_with model: @shop, url: shops_path, local: true do |f| %>
+      <div class="form-group">
+        <%= f.label "お店の名前" %>
+        <%= f.text_field :name, class: "form-control" %>
+      </div>
+      <%= f.fields_for :images do |m| %>
+        <div class="form-group">
+          <%= m.label "料理画像" %>
+          <%= m.attachment_field :food_image, class: "form-control-file" %>
+        </div>
+        <div class="form-group">
+          <%= m.label "店舗画像" %>
+          <%= m.attachment_field :shop_image, class: "form-control-file" %>
+        </div>
+        <%= m.hidden_field :user_id, :value => current_user.id %>
+      <% end %>
+      <div class="form-group">
+        <%= f.label "タグ" %>
+        <%= f.text_field :tag_name, class: "form-control", placeholder: "間に半角スペースで複数可" %>
+      </div>
+      <div class="form-group">
+        <%= f.label "紹介文" %>
+        <%= f.text_area :description, class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.label "住所(都道府県)" %>
+        <%= f.select :prefectures, User.prefectures.keys, {} %>
+      </div>
+      <div class="form-group">
+        <%= f.label "以降の住所(建物名)" %>
+        <%= f.text_field :address, class: "form-control" %>
+        <%= f.text_field :building_name, placeholder: "建物名がある場合はここも記入", class: "mt-3 form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.label "予算" %>
+        <%= f.number_field :minimum_price, min: "1" %>〜<%= f.number_field :max_price, min: "1" %>円
+      </div>
+      <div class="form-group">
+        <%= f.label "お店の電話番号" %>
+        <%= f.text_field :phone_number, class:"form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.label "営業時間" %>
+        <%= f.time_select :start_time %>〜<%= f.time_select :end_time %>
+      </div>
+      <div class="form-group">
+        <%= f.label "補足説明" %>
+        <%= f.text_area :time_description, placeholder: "営業時間の補足説明", class: "form-control" %>
+      </div>
+      <%= f.hidden_field :is_active, :value => 0 %>
+      <div class="form-group">
+        <%= f.submit "登録", class: 'btn btn-secondary' %>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -14,9 +14,9 @@ for i in 1..10 do
     nickname: "a#{i}",
     email: "a#{i}@a",
     password: "aaaaaaa#{i}",
-    current_prefectures: 1
+    current_prefectures: '東京都'
     )
-end 
+end
 for i in 1..10 do
   Shop.create(
     [

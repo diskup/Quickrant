@@ -7,7 +7,6 @@ Rails.application.routes.draw do
     root to: 'homes#top'
     get 'search' => 'searches#search', as: 'search'
     resources :shops,  only:[:index, :show, :edit, :update]
-    resources :fix_requests, only:[:index, :show, :edit, :update]
   end
   # ↓ユーザー
   root to: 'user/homes#top'
@@ -20,24 +19,15 @@ Rails.application.routes.draw do
     resources :shops, except: [:destroy] do
       post 'confirm' => 'shops#confirm'
       get 'complete' => 'shops#complete'
-      resources :images, only: [:new, :create, :destroy] 
-      post 'shop_favorites' => 'shop_favorites#create', as: 'favorites'
-      delete 'shop_favorites/:id' => 'shop_favorites#destroy', as: 'favorite'
+      resources :images, only: [:new, :create, :destroy]
+      resource :favorites, only: [:create, :destroy]
       resources :reviews, only: [:new, :index, :create, :destroy]
-      resources :fix_requests, only: [:new, :create]
     end
-    resources :timeline, except: [:edit, :update] do
-      post 'timeline_favorites' => 'timeline_favorites#create', as: 'favorites'
-      delete 'timeline_favorites/:id' => 'timeline_favorites#destroy', as: 'favorite'
 
-    end
-    resources :schedules, only: [:index, :create, :update, :destroy]
     resources :users, only: [:show, :edit, :update] do
       resource :relationships, only: [:create, :destroy]
       get 'followings' => 'users#followings'
       get 'followeds' => 'users#followeds'
-      get 'unsubscribe' => 'users#unsubscribe'
-      get 'withdraw' => 'users#/withdraw'
     end
   end
 end

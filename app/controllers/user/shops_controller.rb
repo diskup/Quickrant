@@ -1,4 +1,6 @@
 class User::ShopsController < ApplicationController
+  before_action :authenticate_user!, only: [:new, :create]
+
   def new
     @shop = Shop.new
     @shop.images.build
@@ -21,8 +23,11 @@ class User::ShopsController < ApplicationController
   end
 
   def index
-    @shops = Shop.all
-    @tag_list = Tag.all
+    if user_signed_in?
+      @shops = Shop.where(prefectures: current_user.current_prefectures)
+    else
+      @shops = Shop.all
+    end
   end
 
   def show

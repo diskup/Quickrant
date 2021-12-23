@@ -1,5 +1,5 @@
 class User::ReviewsController < ApplicationController
-
+  before_action :authenticate_user!
   def index
     @shop = Shop.find(params[:shop_id])
     @reviews = @shop.reviews

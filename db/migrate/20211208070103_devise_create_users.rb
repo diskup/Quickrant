@@ -33,13 +33,10 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
       # t.datetime :locked_at
 
       t.string :nickname, null: false
-      t.integer :current_prefectures, null: false, default: 0
+      t.string :current_prefectures, null: false
       t.string :background_image_id
       t.string :icon_image_id
       t.text :introduction
-      t.boolean :is_quited, null: false, default: false
-      t.boolean :private_account, null: false, default: false
-
       t.timestamps null: false
     end
 
