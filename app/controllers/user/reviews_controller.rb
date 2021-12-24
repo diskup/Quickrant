@@ -3,6 +3,7 @@ class User::ReviewsController < ApplicationController
   def index
     @shop = Shop.find(params[:shop_id])
     @reviews = @shop.reviews
+    @review = Review.new
   end
 
   def create
@@ -13,10 +14,10 @@ class User::ReviewsController < ApplicationController
       redirect_to shop_reviews_path(@review.shop)
     else
       @shop = Shop.find(params[:shop_id])
-      render 'user/shops/show'
+      redirect_to request.referer
     end
   end
-
+  
   private
   def review_params
     params.require(:review).permit(:score, :content)

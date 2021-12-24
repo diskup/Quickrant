@@ -1,0 +1,19 @@
+<div class='container'>
+  <div class='row'>
+    <div class="mx-auto mt-5">
+      <%= form_with model:[@shop, @shop_image], url: shop_images_path(@shop), local: true do |f| %>
+        <div class="form-group">
+          <%= f.label "料理画像" %>
+          <%= f.attachment_field :food_image, class: "form-control-file" %>
+        </div>
+        <div class="form-group">
+          <%= f.label "店舗画像" %>
+          <%= f.attachment_field :shop_image, class: "form-control-file" %>
+        </div>
+        <div class="form-group">
+          <%= f.submit "登録", class: 'btn btn-secondary' %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

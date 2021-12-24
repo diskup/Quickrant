@@ -1,16 +1,20 @@
 <div class='container'>
   <div class='row mx-auto'>
+    <p class="h5">投稿ユーザー名：<%= link_to @shop.user.nickname, user_path(@shop.user.id) %></p>
+    <div id="favorite_buttons_<%= @shop.id %>">
+      <%= render "user/favorites/favorite", shop: @shop %>
+    </div>
     <div class="shop-info col-12 mt-5">
       <div class="description">
-        <div class="detail">
+        <div class="detail form-group">
           <p>店舗名　：</p>
           <p class="shop-name text"><%= @shop.name %></p>
         </div>
-        <div class="detail">
+        <div class="detail form-group">
           <p>紹介文　：</p>
           <p class="text"><%= @shop.description %></p>
         </div>
-        <div class="detail">
+        <div class="detail form-group">
           <p class="text">
             <% @shop.tags.each do |tag| %>
             <%= tag.tag_name %>
@@ -18,44 +22,45 @@
           </p>
         </div>
         <% unless @shop.start_time.nil? || @shop.end_time.nil? %>
-          <div class="detail">
+          <div class="detail form-group">
             <p>営業時間：</p>
             <p><%= @shop.start_time.strftime("%H:%M") %>~<%= @shop.end_time.strftime("%H:%M") %></p>
           </div>
         <% end %>
         <% unless @shop.time_description.nil? || @shop.time_description =="" %>
-          <div class="detail">
+          <div class="detail form-group">
             <p>補足説明：</p>
             <p class="text"><%= @shop.time_description %></p>
           </div>
         <% end %>
-        <div class="detail">
+        <div class="detail form-group">
           <p>予算　　：</p>
           <p><%= @shop.minimum_price %>~<%= @shop.max_price %>円（一人あたり）</p>
         </div>
-        <div class="detail">
+        <div class="detail form-group">
           <p>電話番号：</p>
           <p><%= @shop.phone_number %></p>
         </div>
-        <div class="detail">
+        <div class="detail form-group">
           <p>住所　　：</p>
-          <p class="text" id="address"><%= @shop.prefectures %><%= @shop.address %></p>
+          <p class="text" id="address"><%= @shop.prefectures %><%= @shop.address %><%= @shop.building_name %></p>
         </div>
       </div>
       <%= render "user/reviews/form", review: @review, shop: @shop %>
-      <div id="favorite_buttons_<%= @shop.id %>">
-        <%= render "user/favorites/favorite", shop: @shop %>
-      </div>
     </div>
     <div class="col-12">
+      <label class="h5">お店の画像</label>
       <% @shop.images.first(1).each do |image| %>
         <div class="shop-info">
           <div class="mr-3"><%= attachment_image_tag(image, :food_image, size: '300x300') %></div>
           <div class="ml-3"><%= attachment_image_tag(image, :shop_image, size: '300x300') %></div>
         </div>
       <% end %>
+      <%= link_to "画像を追加する", new_shop_image_path(@shop.id) %>
+      <%= link_to "全ての画像を見る", shop_images_path(@shop.id) %>
     </div>
     <div class="col-12 mt-5 mb-5">
+      <label class="h5">地図</label>
       <div id="map" class="map"></div>
       <%= javascript_include_tag 'user/map-show.js' %>
     </div>

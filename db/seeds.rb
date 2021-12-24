@@ -21,7 +21,7 @@ for i in 1..10 do
   Shop.create(
     [
     {
-      user_id: 1,
+      user_id: i,
       name: "お店#{i}",
       description: "#{i}番目のお店",
       minimum_price: 1000,
@@ -35,12 +35,43 @@ for i in 1..10 do
   )
   Image.create(
     [
-      {
-      user_id: 1,
+    {
+      user_id: i,
       shop_id: i,
       shop_image: File.open("./app/assets/images/seed.image/no-image.png"),
       food_image: File.open("./app/assets/images/seed.image/no-image.png")
-      }
+    }
+    ]
+  )
+end
+
+for i in 1..20 do
+  Tag.create(
+    [
+    {
+      tag_name: "タグ#{i}番"
+    }
+    ]
+  )
+end
+
+for i in 1..10 do
+  TagMap.create(
+    [
+    {
+      tag_id: i,
+      shop_id: i
+    }
+    ]
+  )
+end
+for i in 1..10 do
+  TagMap.create(
+    [
+    {
+      tag_id: 11 - i,
+      shop_id: i
+    }
     ]
   )
 end

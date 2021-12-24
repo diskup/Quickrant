@@ -17,9 +17,8 @@ Rails.application.routes.draw do
   scope module: :user do
     get 'search' => 'searches#search', as: 'search'
     resources :shops, except: [:destroy] do
-      post 'confirm' => 'shops#confirm'
       get 'complete' => 'shops#complete'
-      resources :images, only: [:new, :create, :destroy]
+      resources :images, only: [:new, :create, :destroy, :index]
       resource :favorites, only: [:create, :destroy]
       resources :reviews, only: [:new, :index, :create, :destroy]
     end

@@ -11,7 +11,8 @@
   </head>
 
   <body>
-    <nav class="navbar navbar-expand-lg navbar-light shadow-sm">
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-light shadow-sm">
         <div class="container">
           <a class="navbar-brand" href="/"><%= image_tag("logo.png", size: '130x90') %></a>
           <button class="navbar-toggler"type="button" data-toggle="collapse"data-target="#navbarSupportedContent"aria-controls="navbarSupportedContent"aria-expanded="false" aria-label="Toggle navigation">
@@ -20,24 +21,25 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mx-auto">
               <% if user_signed_in? %>
-                <li class="nav-item mr-5"><%= link_to "マイページ", user_path(current_user),class:"nav-link text-white" %></li>
-                <li class="nav-item mr-5"><%= link_to "#{current_user.current_prefectures}のお店", shops_path, class: "nav-link text-white" %></li>
-                <li class="nav-item mr-5"><%= link_to "新規店舗登録", new_shop_path, class: "nav-link text-white" %></li>
-                <li class="nav-item mr-5"><%= link_to "ログアウト", destroy_user_session_path,method: :delete, class: "nav-link text-white" %></li>
+                <li><%= link_to "マイページ", user_path(current_user),class:"nav-link text-white mr-5" %></li>
+                <li><%= link_to "#{current_user.current_prefectures}のお店", shops_path, class: "nav-link text-white mr-5" %></li>
+                <li><%= link_to "新規店舗登録", new_shop_path, class: "nav-link text-white mr-5" %></li>
+                <li><%= link_to "ログアウト", destroy_user_session_path,method: :delete, class: "nav-link text-white mr-5" %></li>
               <% elsif admin_signed_in? %>
-                <li class="nav-item mr-5"><%= link_to "お店管理", admin_root_path, class: "nav-link text-white" %></li>
-                <li class="nav-item mr-5"><%= link_to "", admin_root_path, class: "nav-link text-white" %></li>
-                <li class="nav-item mr-5"><%= link_to "Log out", admin_root_path ,method: :delete,class:"nav-link text-white" %></li>
+                <li><%= link_to "お店管理", admin_root_path, class: "nav-link text-white mr-5" %></li>
+                <li><%= link_to "", admin_root_path, class: "nav-link text-white mr-5" %></li>
+                <li><%= link_to "Log out", admin_root_path ,method: :delete,class:"nav-link text-white mr-5" %></li>
               <% else %>
-                <li class="nav-item mr-5"><%= link_to "検索", root_path, class: "nav-link text-white" %></li>
-                <li class="nav-item mr-5"><%= link_to "お店", shops_path, class: "nav-link text-white" %></li>
-                <li class="nav-item mr-5"><%= link_to "新規登録", new_user_registration_path, class: "nav-link text-white" %></li>
-                <li class="nav-item mr-5"><%= link_to "ログイン", new_user_session_path, class: "nav-link text-white" %></li>
+                <li><%= link_to "検索", root_path, class: "nav-link text-white mr-5" %></li>
+                <li><%= link_to "お店", shops_path, class: "nav-link text-white mr-5" %></li>
+                <li><%= link_to "新規登録", new_user_registration_path, class: "nav-link text-white mr-5" %></li>
+                <li><%= link_to "ログイン", new_user_session_path, class: "nav-link text-white mr-5" %></li>
               <% end %>
             </ul>
           </div>
         </div>
       </nav>
+    </header>
     <%= yield %>
   </body>
 </html>
