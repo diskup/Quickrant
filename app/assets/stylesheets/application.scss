@@ -21,12 +21,12 @@
   padding: 0;
   list-style: none;
   box-sizing: border-box;
-  max-width: 100%;
-  height: auto;
 }
 
  // 全体
  body {
+  max-width: 100%;
+  height: auto;
   min-height: 100vh;
   color: #333333;
   background-image: linear-gradient(to right, #f83600 0%, #f9d423 100%);
