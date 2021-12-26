@@ -48,14 +48,14 @@
           <p class="text" id="address"><%= @shop.prefectures %><%= @shop.address %><%= @shop.building_name %></p>
         </div>
       </div>
-      <%= render "user/reviews/form", review: @review, shop: @shop %>
     </div>
-    <div class="col-12">
+    <%= render "user/reviews/form", review: @review, shop: @shop %>
+    <div class="col-12 mt-3">
       <label class="h5">お店の画像</label>
       <% @shop.images.first(1).each do |image| %>
         <div class="shop-info">
-          <div class="mr-3"><%= attachment_image_tag(image, :food_image, size: '300x300') %></div>
-          <div class="ml-3"><%= attachment_image_tag(image, :shop_image, size: '300x300') %></div>
+          <div class="mr-3"><%= attachment_image_tag(image, :food_image, class:"shop-image") %></div>
+          <div class="ml-3"><%= attachment_image_tag(image, :shop_image, class:"shop-image") %></div>
         </div>
       <% end %>
       <%= link_to "画像を追加", new_shop_image_path(@shop.id), class:"mt-2 btn btn-secondary sm" %>

@@ -60,11 +60,12 @@
 }
 .background-image {
   position: relative;
+  height: 20rem;
 }
 .icon-image {
   position: absolute;
-  left: 225px;
-  top: 250px;
+  top: 73%;
+  left: 33%;
   color: black;
 }
 
@@ -74,21 +75,26 @@
 }
 
 .detail {
- width: 400px;
- display: flex;
-}
-.text {
- width: 40%;
- word-break: break-all;
-}
-.shop-image {
-  padding: 10px;
   display: flex;
 }
+
+.shop-image {
+  width: 100%;
+  height: 40vh;
+}
+.shop-image-all {
+ width: 30%;
+ height: 30vh;
+}
+.text {
+  width: 40%;
+  word-break: break-all;
+}
+
 // 地図
 #map {
-  height: 400px;
-  width: 600px;
+  height: 50vh;
+  width: 50%;
   color:black
 }
  // レビュー部分
@@ -99,9 +105,9 @@
 
 .star-rating {
   position: relative;
-  width: 5em;
+  width: 6em;
   height: 1em;
-  font-size: 25px;
+  font-size: 1.5rem;
 }
 .star-rating-front {
   position: absolute;
@@ -118,11 +124,11 @@
   display: flex;
 }
 .average-score-display {
-  font-size: 16px;
+  font-size: 1rem;
 }
 
 .rating-box .ratings .fa{
-  font-size: 30px;
+  font-size: 1.5rem;
   color:#ffcc00;
   cursor: pointer;
 }
@@ -132,7 +138,7 @@
 }
 
 .rating-value-display {
-  font-size: 20px;
+  font-size: 1.2rem;
 }
 
  // モーダルウィンドウ
@@ -153,11 +159,11 @@
 .modal__content {
   background: #fff;
   left: 50%;
-  padding: 40px;
+  padding: 2%;
   position: absolute;
   top: 50%;
   transform: translate(-50%,-50%);
-  width: 25%;
+  width: 35%;
 }
 .close-button {
   position: absolute;

@@ -7,13 +7,11 @@
         <br><p><%= @user.introduction %></p>
       <% end %>
     </div>
-    <div class="col-7 mb-5">
-      <div class="background-image mt-5">
-        <%= attachment_image_tag(@user, :background_image, size: '550x300', fallback: "no-image-back.png") %>
-        <div class="icon-image">
-          <%= attachment_image_tag(@user, :icon_image, size: '100x100', fallback: "no-image.png", class:"rounded-circle border") %>
-          <br><p class="text-center"><%= @user.nickname %></p>
-        </div>
+    <div class="col-8 mb-5">
+      <div class="mt-5">
+        <%= attachment_image_tag(@user, :background_image, width: "80%", fallback: "no-image-back.png", class:"background-image") %>
+        <br>
+        <%= attachment_image_tag(@user, :icon_image, width: "15%", fallback: "no-image.png", class:"icon-image rounded-circle border") %>
       </div>
       <% if @user == current_user %>
         <p class="mt-2 h4"><%= link_to "編集する", edit_user_path(@user) %></p>
