@@ -1,3 +1,4 @@
 class Admin::ShopsController < ApplicationController
-  def 
+  def
+  end
 end
