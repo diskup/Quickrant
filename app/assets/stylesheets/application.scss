@@ -26,9 +26,33 @@
  // 全体
  body {
   min-height: 100vh;
-  color: white;
+  color: #333333;
   background-image: linear-gradient(to right, #f83600 0%, #f9d423 100%);
   font-family: serif;
+
+  // ページのタイトル
+ .title {
+  font-style: italic;
+  font-weight: bold;
+  text-align: center;
+  text-shadow:
+ 		0 0.03em 0.03em #FFAB91,
+ 		0 0.03em 0.03em #000,
+ 		0 0.03em 0.03em #FBE9E7;
+}
+ // 検索ページ
+ .search-title {
+  font-style: italic;
+  font-weight: bold;
+  text-shadow:
+ 		0 0.03em 0.03em #FFAB91,
+ 		0 0.03em 0.03em #000,
+ 		0 0.03em 0.03em #FBE9E7;
+ }
+ // kaminariの設定
+ .pagination {
+  justify-content: center;
+}
 
   // マイページ
 }

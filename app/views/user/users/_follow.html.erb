@@ -1,0 +1,15 @@
+<table class='table'>
+  <% users.each do |user| %>
+    <tr>
+      <td>
+        <%= link_to user_path(user) do %>
+          <%= attachment_image_tag(user, :icon_image, size: '50x50', fallback: "no-image.png", class:"rounded-circle border") %>
+        <% end %>
+      </td>
+      <td><%= user.nickname %></td>
+      <td>フォロー数： <%= user.followings.count %></td>
+      <td>フォロワー数： <%= user.followeds.count %></td>
+      <td><%= link_to '詳細ページ', user_path(user), class: "user_#{user.id}" %></td>
+    </tr>
+  <% end %>
+</table>

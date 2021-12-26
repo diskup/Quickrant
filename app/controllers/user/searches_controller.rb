@@ -16,25 +16,29 @@ class User::SearchesController < ApplicationController
     end
     # ↓キーワードを含む時の処理
     if params[:keyword].present?
-    # キーワードからタグを探す
-      keyword = Tag.find_by(tag_name: params[:keyword])
-    # 空の配列を作る
-      shops = []
-    # お店のタグと一致した時そのお店を空の配列に追加する 
+    # まず店名が部分一致したお店を探す。
+      keyword_shop = Shop.where('name LIKE ?', '%'+params[:keyword]+'%')
+    # タグが一致したお店を追加するための空の配列を作成。
+      tag_shops = []
+    # キーワードと一致するタグを探す
+      keyword_tag = Tag.find_by(tag_name: params[:keyword])
+    # お店のタグと一致した時そのお店をshopsに追加する
       @shops.each do |shop|
+    # それぞれのショップのtag_mapモデルの中にkeyword_tagがあるならtag_shopsにそのお店を追加。
         shop.tag_maps.each do |tag_map|
-          if tag_map.tag == keyword
-            shops << tag_map.shop
+          if tag_map.tag == keyword_tag
+            tag_shops << tag_map.shop
           end
         end
       end
-      @shops = shops
+      # 重複を除く
+      @shops = (tag_shops + keyword_shop).uniq
     end
-    
+
     # 選択した優先順位に応じて平均をとり並び替える処理
-    
+
     if params[:sort] == "評価が良い"
-      
+
       @shops.each do |shop|
         shop.average = shop.avg_score
       end
@@ -45,6 +49,7 @@ class User::SearchesController < ApplicationController
       end
       @shops = @shops.sort { |x,y| x.average <=> y.average }
     end
+    @shops_all = @shops.count
+    @shops = Kaminari.paginate_array(@shops).page(params[:page]).per(10)
   end
-  
 end

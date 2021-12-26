@@ -22,8 +22,8 @@
             <ul class="navbar-nav mx-auto">
               <% if user_signed_in? %>
                 <li><%= link_to "マイページ", user_path(current_user),class:"nav-link text-white mr-5" %></li>
-                <li><%= link_to "#{current_user.current_prefectures}のお店", shops_path, class: "nav-link text-white mr-5" %></li>
-                <li><%= link_to "新規店舗登録", new_shop_path, class: "nav-link text-white mr-5" %></li>
+                <li><%= link_to "お店検索", root_path, class: "nav-link text-white mr-5" %></li>
+                <li><%= link_to "店舗登録", new_shop_path, class: "nav-link text-white mr-5" %></li>
                 <li><%= link_to "ログアウト", destroy_user_session_path,method: :delete, class: "nav-link text-white mr-5" %></li>
               <% elsif admin_signed_in? %>
                 <li><%= link_to "お店管理", admin_root_path, class: "nav-link text-white mr-5" %></li>

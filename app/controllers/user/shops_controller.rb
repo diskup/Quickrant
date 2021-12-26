@@ -23,11 +23,15 @@ class User::ShopsController < ApplicationController
   end
 
   def index
-    if user_signed_in?
-      @shops = Shop.where(prefectures: current_user.current_prefectures)
-    else
-      @shops = Shop.all
+    if params[:option] == "フォローユーザーのおすすめ"
+       current_user.followings
+    else params[:option] == "フォローユーザーの投稿店舗"
     end
+      @shops = Shop.where(prefectures: current_user.current_prefectures)
+
+    
+    
+    @shops = Kaminari.paginate_array(@shops).page(params[:page]).per(10)
   end
 
   def show

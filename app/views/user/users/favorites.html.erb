@@ -1,0 +1,16 @@
+<div class="container">
+  <div class="row">
+    <div class="mx-auto mt-3">
+      <% if @user.is_followed_by?(current_user) && current_user.is_followed_by?(@user) || @user == current_user %>
+        <% if @shops.any? %>
+          <h2 class="title"><%= @user.nickname %>さんのお気に入り</h2>
+          <%= render "user/shops/shop", shops: @shops %>
+        <% else %>
+          <p class="mx-auto">お気に入りはありません</p>
+        <% end %>
+      <% else %>
+        <p class="mx-auto">相互フォローすると閲覧できます</p>
+      <% end %>
+    </div>
+  </div>
+</div>

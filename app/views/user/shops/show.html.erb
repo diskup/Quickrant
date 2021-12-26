@@ -56,8 +56,8 @@
           <div class="ml-3"><%= attachment_image_tag(image, :shop_image, size: '300x300') %></div>
         </div>
       <% end %>
-      <%= link_to "画像を追加する", new_shop_image_path(@shop.id) %>
-      <%= link_to "全ての画像を見る", shop_images_path(@shop.id) %>
+      <%= link_to "画像を追加", new_shop_image_path(@shop.id), class:"mt-2 btn btn-secondary sm" %>
+      <%= link_to "全ての画像", shop_images_path(@shop.id), class:"mt-2 btn btn-secondary sm" %>
     </div>
     <div class="col-12 mt-5 mb-5">
       <label class="h5">地図</label>
