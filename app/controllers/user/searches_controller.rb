@@ -8,8 +8,8 @@ class User::SearchesController < ApplicationController
       @shops = Shop.all
     else
     # ジオコーダーの結果を取得
-      latitude = results.first.coordinates[0]
-      longitude = results.first.coordinates[1]
+      latitude = results.first.coordinates[0].to_f
+      longitude = results.first.coordinates[1].to_f
       distance = params[:distance].to_i
     # 入力数値km圏内のお店を抽出
       @shops = Shop.within(distance, origin: [latitude, longitude])

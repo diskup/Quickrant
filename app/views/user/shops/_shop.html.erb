@@ -1,6 +1,7 @@
 <table class="table">
   <th>店舗名</th>
   <th>評価</th>
+  <th>予算</th>
   <th></th>
   <% shops.each do |shop| %>
     <tr>
@@ -8,8 +9,9 @@
       <% if shop.avg_score == 0 %>
         <td>未評価</td>
       <% else %>
-        <td><%= shop.avg_score %>点</td>
+        <td><%= shop.avg_score %>点(<%= shop.reviews.count %>件の評価)</td>
       <% end %>
+      <td>約<%= shop.avg_price %>円</td>
       <td>
         <% shop.images.first(1).each do |image| %>
           <%= attachment_image_tag(image, :food_image, size: '200x200', class:"ml-2 mt-2 pb-2") %>

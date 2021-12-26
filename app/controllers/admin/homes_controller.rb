@@ -1,4 +1,5 @@
 class Admin::HomesController < ApplicationController
   def top
-  end 
+    @shops = Shop.where(is_active: 0)
+  end
 end

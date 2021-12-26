@@ -5,8 +5,7 @@ Rails.application.routes.draw do
   }
   namespace :admin do
     root to: 'homes#top'
-    get 'search' => 'searches#search', as: 'search'
-    resources :shops,  only:[:index, :show, :edit, :update]
+    resources :shops,  only:[:index, :show, :edit, :update, :destroy]
   end
   # ↓ユーザー
   root to: 'user/homes#top'

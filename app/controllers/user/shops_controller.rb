@@ -23,15 +23,54 @@ class User::ShopsController < ApplicationController
   end
 
   def index
-    if params[:option] == "フォローユーザーのおすすめ"
-       current_user.followings
-    else params[:option] == "フォローユーザーの投稿店舗"
+    if params[:option].present?
+      # ログイン時の処理
+      if user_signed_in?
+        # 空の配列shopを作成
+        shops = []
+        # タイトル
+        @shops_title = params[:option]
+        # ログインユーザーがフォローしているユーザーが4以上のスコアで評価し、平均スコアが3以上のお店をshopsに格納
+        if params[:option] == "フォローユーザーの高評価店舗"
+          current_user.followings.each do |user|
+            user.reviews.each do |review|
+              if review.score >= 4 && review.shop.avg_score > 3
+                shops << review.shop
+              end
+            end
+          end
+          # 重複削除
+          shops = shops.uniq
+        # ログインユーザーがフォローしているユーザーが登録した店舗をshopsに格納
+        elsif params[:option] == "フォローユーザーの登録店舗"
+          current_user.followings.each do |user|
+            shops = shops + user.shops
+          end
+        # ログインユーザーのcurrent_prefecturesのお店を格納
+        else
+          shops = Shop.where(prefectures: current_user.current_prefectures)
+        end
+      # ログインしていない時の処理
+      else
+        @shops_title = params[:option] + "のおすすめ"
+        # 選択された都道府県のお店を格納
+        shops = Shop.where(prefectures: params[:option])
+      end
+      # フォローユーザーの登録店舗の時だけ投稿日が新しい順に並び替え、それ以外はお店の評価が高い順に並び替え
+      unless params[:option] == "フォローユーザーの登録店舗"
+        shops.each do |shop|
+          shop.average = shop.avg_score
+        end
+        @shops = shops.sort { |x,y| y.average <=> x.average }
+      else
+        @shops = shops.sort { |x,y| y.created_at <=> x.created_at }
+      end
+      # kaminariの設定
+      @shops = Kaminari.paginate_array(@shops).page(params[:page]).per(10)
+    # urlを直接入力した時用
+    else
+      @shops = Shop.all.page(params[:page]).per(10)
     end
-      @shops = Shop.where(prefectures: current_user.current_prefectures)
-
-    
-    
-    @shops = Kaminari.paginate_array(@shops).page(params[:page]).per(10)
   end
 
   def show

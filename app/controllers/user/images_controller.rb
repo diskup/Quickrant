@@ -1,8 +1,11 @@
 class User::ImagesController < ApplicationController
+  before_action :authenticate_user!, except: [:index]
+  
   def new
     @shop = Shop.find(params[:shop_id])
     @shop_image = Image.new
   end
+  
   def create
     @shop = Shop.find(params[:shop_id])
     @shop_image = Image.new(shop_image_params)
@@ -11,9 +14,7 @@ class User::ImagesController < ApplicationController
     @shop_image.save
     redirect_to shop_path(@shop)
   end
-  def destroy
-    Image.find_by(id: params[:id]).destroy
-  end
+  
   def index
     @shop = Shop.find(params[:shop_id])
     @shop_images = @shop.images

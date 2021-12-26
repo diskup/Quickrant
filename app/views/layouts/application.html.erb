@@ -27,11 +27,10 @@
                 <li><%= link_to "ログアウト", destroy_user_session_path,method: :delete, class: "nav-link text-white mr-5" %></li>
               <% elsif admin_signed_in? %>
                 <li><%= link_to "お店管理", admin_root_path, class: "nav-link text-white mr-5" %></li>
-                <li><%= link_to "", admin_root_path, class: "nav-link text-white mr-5" %></li>
-                <li><%= link_to "Log out", admin_root_path ,method: :delete,class:"nav-link text-white mr-5" %></li>
+                <li><%= link_to "申請一覧", admin_root_path, class: "nav-link text-white mr-5" %></li>
+                <li><%= link_to "ログアウト", admin_root_path ,method: :delete,class:"nav-link text-white mr-5" %></li>
               <% else %>
-                <li><%= link_to "検索", root_path, class: "nav-link text-white mr-5" %></li>
-                <li><%= link_to "お店", shops_path, class: "nav-link text-white mr-5" %></li>
+                <li><%= link_to "お店検索", root_path, class: "nav-link text-white mr-5" %></li>
                 <li><%= link_to "新規登録", new_user_registration_path, class: "nav-link text-white mr-5" %></li>
                 <li><%= link_to "ログイン", new_user_session_path, class: "nav-link text-white mr-5" %></li>
               <% end %>

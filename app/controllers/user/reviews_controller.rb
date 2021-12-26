@@ -1,5 +1,5 @@
 class User::ReviewsController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, only: [:create]
   def index
     @shop = Shop.find(params[:shop_id])
     @reviews = @shop.reviews
@@ -17,7 +17,7 @@ class User::ReviewsController < ApplicationController
       redirect_to request.referer
     end
   end
-  
+
   private
   def review_params
     params.require(:review).permit(:score, :content)

@@ -2,8 +2,8 @@
   <div class="row">
     <div class="mx-auto mt-3">
       <% if @shops.any? %>
-      <h2 class="search-title">検索結果：<%= @shops_all %>件</h2>
-      <%= render "user/shops/shop", shops: @shops %>
+        <h2 class="search-title">検索結果：<%= @shops_all %>件</h2>
+        <%= render "user/shops/shop", shops: @shops %>
       <% else %>
         <p class="mx-auto">検索結果は見つかりませんでした。</p>
       <% end %>
