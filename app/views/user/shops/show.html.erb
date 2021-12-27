@@ -2,7 +2,7 @@
   <div class='row mx-auto'>
     <p class="h5">投稿ユーザー名：<%= link_to @shop.user.nickname, user_path(@shop.user.id) %></p>
     <% if user_signed_in? %>
-      <div id="favorite_buttons_<%= @shop.id %>">
+      <div class="h3" id="favorite_buttons_<%= @shop.id %>">
         <%= render "user/favorites/favorite", shop: @shop %>
       </div>
     <% end %>
@@ -54,18 +54,19 @@
       <label class="h5">お店の画像</label>
       <% @shop.images.first(1).each do |image| %>
         <div class="shop-info">
-          <div class="mr-3"><%= attachment_image_tag(image, :food_image, class:"shop-image") %></div>
-          <div class="ml-3"><%= attachment_image_tag(image, :shop_image, class:"shop-image") %></div>
+          <div class="mr-1"><%= attachment_image_tag(image, :food_image, class:"shop-image") %></div>
+          <div class="ml-1"><%= attachment_image_tag(image, :shop_image, class:"shop-image") %></div>
         </div>
       <% end %>
       <%= link_to "画像を追加", new_shop_image_path(@shop.id), class:"mt-2 btn btn-secondary sm" %>
       <%= link_to "全ての画像", shop_images_path(@shop.id), class:"mt-2 btn btn-secondary sm" %>
     </div>
-    <div class="col-12 mt-5 mb-5">
+  </div>
+  <div class="row">
+    <div class="map-wrap">
       <label class="h5">地図</label>
       <div id="map" class="map"></div>
-      <%= javascript_include_tag 'user/map-show.js' %>
     </div>
   </div>
 </div>
-
+<%= javascript_include_tag 'user/map-show.js' %>

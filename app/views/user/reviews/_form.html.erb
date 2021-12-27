@@ -1,4 +1,4 @@
-<div class="col-7">
+<div class="col-sm-12 col-md-9 co-lg-7" >
   <div class="review">
     <div class="card-header">
       <%= @shop.name %>
@@ -21,7 +21,7 @@
 <!--モーダルウィンドウ-->
 <div class="modal js-modal">
   <div class="modal__bg">
-    <div class="modal__content">
+    <div class="modal__content col-sm-7 col-md-5 col-lg-4">
       <button class="js-modal-close close-button">×</button>
       <div class="rating-box mt-3">
         <%= form_with model: review, url: shop_reviews_path(shop), local: true do |f| %>

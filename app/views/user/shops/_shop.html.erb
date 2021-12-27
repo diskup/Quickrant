@@ -11,11 +11,11 @@
       <% else %>
         <td><%= shop.avg_score %>点(<%= shop.reviews.count %>件の評価)</td>
       <% end %>
-      <td>約<%= shop.avg_price %>円</td>
-      <td>
+      <td><%= shop.minimum_price %>~<%= shop.max_price %>円</td>
+      <td width="40%">
         <% shop.images.first(1).each do |image| %>
-          <%= attachment_image_tag(image, :food_image, size: '200x200', class:"ml-2 mt-2 pb-2") %>
-          <%= attachment_image_tag(image, :shop_image, size: '200x200', class:"ml-2 mt-2 pb-2") %>
+          <%= attachment_image_tag(image, :food_image, class:"shop-image-index ml-2 mt-2 pb-2") %>
+          <%= attachment_image_tag(image, :shop_image, class:"shop-image-index ml-2 mt-2 pb-2") %>
         <% end %>
       </td>
     </tr>

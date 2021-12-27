@@ -18,7 +18,7 @@
       <%= form_with url: search_path, method: :get, local: true do |f| %>
         <%= f.text_field :keyword, placeholder: "キーワードを入力", class:"mb-2" %>を含む(入力は任意)
         <br>
-        <%= f.text_field :location, :size=>"50", placeholder: "住所や場所名を入力してください。(例：東京タワー)" %>から
+        <%= f.text_field :location, :size=>"50", placeholder: "住所や場所を入力(例：東京タワー)" %>から
         <br>
         <button id="get_current_shop" type="button" class="btn-sm btn-secondary mt-2 mb-2">現在地取得ボタン</button>←(現在地が入力されます)
         <br>
