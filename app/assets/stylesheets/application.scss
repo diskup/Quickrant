@@ -33,7 +33,7 @@ body {
   font-family: serif;
 
   // ページのタイトル
- .title {
+.title {
   font-style: italic;
   font-weight: bold;
   text-align: center;
@@ -43,7 +43,7 @@ body {
  		0 0.03em 0.03em #FBE9E7;
 }
  // 検索ページ
- .search-title {
+.search-title {
   font-style: italic;
   font-weight: bold;
   text-shadow:
@@ -56,13 +56,13 @@ body {
   margin: 0 auto;
  }
 
- input[type="number"] {
+input[type="number"] {
   width: 15%;
   height: auto;
  }
 
  // kaminariの設定
- .pagination {
+.pagination {
   justify-content: center;
 }
 
@@ -100,22 +100,18 @@ body {
   height: auto;
 }
 .shop-image-all {
- width: 40%;
- height: 45vh;
+  width: 40%;
+  height: 45vh;
 }
 .shop-image-index {
- width: 40%;
- height: auto;
+  width: 40%;
+  height: auto;
 }
 .text {
-  width: 40%;
+  width: 70%;
   word-break: break-all;
 }
 // 地図
-.map-wrap {
-
-}
-
 #map {
   max-width: 500px;
   height: 45vh;
