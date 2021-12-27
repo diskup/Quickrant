@@ -13,14 +13,24 @@
  *= require_tree .
  *= require_self
  */
-
- // 地図
+ // 余分なスペース削除
  @import "bootstrap";
 * {
   margin: 0;
   padding: 0;
   list-style: none;
   box-sizing: border-box;
+
+ // 全ての画像サイズ
+}
+img {
+ width: 100%;
+ max-width: 100%;
+ height: auto;
+}
+
+.logo {
+  width: 15%;
 }
 
  // 全体
@@ -95,14 +105,14 @@ input[type="number"] {
 .detail {
   display: flex;
 }
-
 .shop-image {
   max-width: 80%;
   height: auto;
 }
 .shop-image-all {
-  width: 40%;
-  height: 45vh;
+  width: 50%;
+  height: auto;
+  display: flex;
 }
 .shop-image-index {
   width: 40%;
