@@ -15,3 +15,10 @@ ja:
        shop_image: 店舗画像
        food_image: 料理画像
        shop_image_or_food_image: 料理画像または店舗画像
+ views:
+   pagination:
+     first: "&laquo; 最初"
+     last: "最後 &raquo;"
+     previous: "&lsaquo; 前"
+     next: "次 &rsaquo;"
+     truncate: "..."

@@ -64,8 +64,9 @@ input[type="number"] {
  // kaminariの設定
 .pagination {
   justify-content: center;
+  margin: 0 auto;
+  display: flex;
 }
-
   // マイページ
 }
 .background-image {
@@ -189,7 +190,7 @@ input[type="number"] {
   right: 1rem;
   top: 1rem;
 }
-
+// 画面サイズに応じて一部変更
 @media screen and (max-width: 768px) {
  .shop-image-all {
     height: 35vh;
