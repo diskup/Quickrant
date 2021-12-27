@@ -5,13 +5,13 @@
       <p class="mt-2 h5">料理画像</p>
       <div>
         <% @shop_images.each do |image| %>
-        <%= attachment_image_tag(image, :food_image, class:"shop-image-all ml-2 mt-2 pb-2") %>
+        <%= attachment_image_tag(image, :food_image, class:"shop-image-all ml-4 mt-3 pb-3") %>
         <% end %>
       </div>
       <p class="mt-2 h5">店舗画像</p>
       <div>
         <% @shop_images.each do |image| %>
-        <%= attachment_image_tag(image, :shop_image, class:"shop-image-all ml-2 mt-2 pb-2") %>
+        <%= attachment_image_tag(image, :shop_image, class:"shop-image-all ml-4 mt-2 pb-2") %>
         <% end %>
       </div>
     </div>

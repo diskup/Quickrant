@@ -90,8 +90,8 @@ body {
   height: auto;
 }
 .shop-image-all {
- width: 30%;
- height: 30vh;
+ width: 40%;
+ height: 45vh;
 }
 .shop-image-index {
  width: 40%;
@@ -183,10 +183,17 @@ body {
   right: 1rem;
   top: 1rem;
 }
-
+@media screen and (max-width: 768px) {
+ .shop-image-all {
+    height: 35vh;
+ }
+}
 @media screen and (max-width: 575px) {
   .modal__content {
     width: 80%;
+  }
+  .shop-image-all {
+    height: 25vh;
   }
 }
 @media screen and (min-width: 992px) {

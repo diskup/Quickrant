@@ -14,6 +14,7 @@ class User < ApplicationRecord
   has_many :relationships, class_name: "Relationship", foreign_key: "following_id", dependent: :destroy
   has_many :followings, through: :relationships, source: :followed
   has_many :followeds, through: :reverse_of_relationships, source: :following
+  validates :nickname, presence: true
 
   def is_followed_by?(user)
     reverse_of_relationships.find_by(following_id: user.id).present?

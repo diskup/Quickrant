@@ -1,0 +1,14 @@
+<% if obj.errors.any? %>
+  <div class="text-white" id="error_explanation">
+    <h3><%= pluralize(obj.errors.count, "件のエラー項目があります") %></h3>
+    <ul>
+      <% obj.errors.full_messages.each do |message| %>
+        <% if message.to_s == "Images shop image or food imageを入力してください" %>
+          <li>・お店の画像を追加してください</li>
+        <% else %>
+          <li>・<%= message %></li>
+        <% end %>
+      <% end %>
+    </ul>
+  </div>
+<% end %>

@@ -92,7 +92,6 @@ class User::ShopsController < ApplicationController
                                  :start_time,
                                  :end_time,
                                  :time_description,
-                                 :is_active,
                                  :latitude,
                                  :longitude,
                                  images_attributes: [:shop_image,

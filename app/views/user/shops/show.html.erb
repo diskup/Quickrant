@@ -50,7 +50,7 @@
       </div>
     </div>
     <%= render "user/reviews/form", review: @review, shop: @shop %>
-    <div class="col-12 mt-3">
+    <div class="col-sm-12 col-md-10 col-lg-8 mt-3">
       <label class="h5">お店の画像</label>
       <% @shop.images.first(1).each do |image| %>
         <div class="shop-info">
@@ -58,8 +58,8 @@
           <div class="ml-1"><%= attachment_image_tag(image, :shop_image, class:"shop-image") %></div>
         </div>
       <% end %>
-      <%= link_to "画像を追加", new_shop_image_path(@shop.id), class:"mt-2 btn btn-secondary sm" %>
-      <%= link_to "全ての画像", shop_images_path(@shop.id), class:"mt-2 btn btn-secondary sm" %>
+      <%= link_to "画像を追加する", new_shop_image_path(@shop.id), class:"mt-2 mr-3 btn btn-secondary sm" %>
+      <%= link_to "全ての画像を見る", shop_images_path(@shop.id), class:"mt-2 btn btn-secondary sm" %>
     </div>
   </div>
   <div class="m-3" id="map" class="map"></div>

@@ -1,0 +1,17 @@
+ja:
+ activerecord:
+   attributes:
+     user:
+       nickname: ニックネーム
+     shop:
+       name: 店舗名
+       prefectures: 都道府県
+       address: 住所
+       description: 紹介文
+       minimum_price: 下限価格
+       max_price: 上限価格
+       phone_number: お店の電話番号
+     image:
+       shop_image: 店舗画像
+       food_image: 料理画像
+       shop_image_or_food_image: 料理画像または店舗画像

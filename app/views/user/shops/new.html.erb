@@ -1,6 +1,7 @@
 <div class='container'>
   <div class='row'>
     <div class="mx-auto mt-5">
+      <%= render 'layouts/errors', obj: @shop %>
       <%= form_with model: @shop, url: shops_path, local: true do |f| %>
       <div class="form-group">
         <%= f.label "お店の名前" %>
@@ -18,8 +19,8 @@
         <%= m.hidden_field :user_id, :value => current_user.id %>
       <% end %>
       <div class="form-group">
-        <%= f.label "タグ" %>
-        <%= f.text_field :tag_name, class: "form-control", placeholder: "間に半角スペースで複数可" %>
+        <%= f.label "タグを追加" %>(任意)
+        <%= f.text_field :tag_name, class: "form-control", placeholder: "複数つける場合は間に半角スペースを入力" %>
       </div>
       <div class="form-group">
         <%= f.label "紹介文" %>
@@ -36,7 +37,7 @@
       </div>
       <div class="form-group">
         <%= f.label "予算" %>
-        <%= f.number_field :minimum_price, min: "1" %>〜<%= f.number_field :max_price, min: "1" %>円
+        <%= f.number_field :minimum_price, min: "1", placeholder: "下限" %>〜<%= f.number_field :max_price, min: "1", placeholder: "上限" %>円
       </div>
       <div class="form-group">
         <%= f.label "お店の電話番号" %>
@@ -48,9 +49,8 @@
       </div>
       <div class="form-group">
         <%= f.label "補足説明" %>
-        <%= f.text_area :time_description, placeholder: "営業時間の補足説明", class: "form-control" %>
+        <%= f.text_area :time_description, placeholder: "必要であればご記入ください。", class: "form-control" %>
       </div>
-      <%= f.hidden_field :is_active, :value => 0 %>
       <div class="form-group">
         <%= f.submit "登録", class: 'btn btn-secondary' %>
       </div>

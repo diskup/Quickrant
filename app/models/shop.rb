@@ -11,8 +11,14 @@ class Shop < ApplicationRecord
   has_many :timelines, dependent: :destroy
   has_many :tag_maps, dependent: :destroy
   has_many :tags, through: :tag_maps
-  
   attr_accessor :average
+
+  validates :name, presence: true
+  validates :prefectures, presence: true
+  validates :address, presence: true
+  validates :description, presence: true
+  validates :minimum_price, presence: true
+  validates :max_price, presence: true
 
   geocoded_by :address
   after_validation :geocode

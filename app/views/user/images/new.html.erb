@@ -1,6 +1,7 @@
 <div class='container'>
   <div class='row'>
     <div class="mx-auto mt-5">
+      <%= render 'layouts/errors', obj: @shop_image %>
       <%= form_with model:[@shop, @shop_image], url: shop_images_path(@shop), local: true do |f| %>
         <div class="form-group">
           <%= f.label "料理画像" %>
