@@ -4,7 +4,7 @@
   <th>予算</th>
   <th></th>
   <% shops.each do |shop| %>
-    <tr>
+    <tr align="left" valign="bottom">
       <td><%= link_to shop.name, shop_path(shop) %></td>
       <% if shop.avg_score == 0 %>
         <td>未評価</td>
