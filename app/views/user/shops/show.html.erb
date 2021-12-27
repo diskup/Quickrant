@@ -62,11 +62,6 @@
       <%= link_to "全ての画像", shop_images_path(@shop.id), class:"mt-2 btn btn-secondary sm" %>
     </div>
   </div>
-  <div class="row">
-    <div class="map-wrap">
-      <label class="h5">地図</label>
-      <div id="map" class="map"></div>
-    </div>
-  </div>
+  <div class="m-3" id="map" class="map"></div>
 </div>
 <%= javascript_include_tag 'user/map-show.js' %>
