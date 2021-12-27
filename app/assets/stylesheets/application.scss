@@ -110,9 +110,10 @@ input[type="number"] {
   height: auto;
 }
 .shop-image-all {
-  width: 50%;
-  height: auto;
-  display: flex;
+  flex-wrap: wrap;
+}
+.shop-image-self {
+  width: 40%;
 }
 .shop-image-index {
   width: 40%;
