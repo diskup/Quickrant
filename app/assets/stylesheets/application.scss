@@ -202,17 +202,10 @@ input[type="number"] {
   top: 1rem;
 }
 // 画面サイズに応じて一部変更
-@media screen and (max-width: 768px) {
- .shop-image-all {
-    height: 35vh;
- }
-}
+
 @media screen and (max-width: 575px) {
   .modal__content {
     width: 80%;
-  }
-  .shop-image-all {
-    height: 25vh;
   }
 }
 @media screen and (min-width: 992px) {
