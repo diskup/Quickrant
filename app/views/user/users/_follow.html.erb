@@ -9,7 +9,7 @@
       <td><%= user.nickname %></td>
       <td>フォロー数： <%= user.followings.count %></td>
       <td>フォロワー数： <%= user.followeds.count %></td>
-      <td><%= link_to '詳細ページ', user_path(user), class: "user_#{user.id}" %></td>
+      <td><%= link_to '詳細ページ', user_path(user) %></td>
     </tr>
   <% end %>
 </table>

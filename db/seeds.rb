@@ -14,6 +14,8 @@ for i in 1..20 do
     current_prefectures: '東京都'
     )
 end
+max = ["1500","2000","2500","3000","3500","4000","4500","5000"]
+min = ["300","400","500","600","700","800","900","1000"]
 array = ['千代田区', '中央区', '港区', '新宿区', '文京区', '台東区', '墨田区', '江東区', '品川区', '目黒区', '大田区', '世田谷区', '渋谷区', '中野区', '杉並区', '豊島区', '北区', '荒川区', '板橋区', '練馬区', '足立区', '葛飾区', '江戸川区']
 for i in 1..300 do
   Shop.create(
@@ -22,10 +24,10 @@ for i in 1..300 do
       user_id: rand(1..20),
       name: "お店#{i}",
       description: "#{i}番目のお店",
-      minimum_price: rand(1..999).round(-1),
-      max_price: rand(1000..10000).round(-2),
+      minimum_price: min.sample,
+      max_price: max.sample,
       prefectures: "東京都",
-      address: array[rand(array.length)],
+      address: array.sample,
       phone_number: 000-0000-0000
     }
     ]
@@ -41,12 +43,12 @@ for i in 1..300 do
     ]
   )
 end
-
-for i in 1..20 do
+tag = ["中華","和食","イタリアン","フレンチ","鍋","カフェ","居酒屋","焼肉","寿司","ラーメン","洋食","ファミレス","バイキング","揚げ物","スイーツ"]
+for i in 1..15 do
   Tag.create(
     [
     {
-      tag_name: "タグ#{i}番"
+      tag_name: tag[i-1]
     }
     ]
   )
@@ -56,7 +58,7 @@ for i in 1..300 do
   TagMap.create(
     [
     {
-      tag_id: rand(1..20),
+      tag_id: rand(1..15),
       shop_id: rand(1..300)
     }
     ]
@@ -72,15 +74,17 @@ for i in 1..300 do
       ]
     )
 end
-content = ["まあまあだった","微妙だった","良かった","とても良かった","とても悪かった"]
+rand_num = ["0","2","4","6","8"]
+content = ["1","とても悪かった","2","微妙だった","3","普通だった","4","良かった","5","とても良かった"]
 for i in 1..1000 do
+  n = rand_num.sample.to_i
   Review.create(
     [
     {
       user_id: rand(1..20),
       shop_id: rand(1..300),
-      score: rand(1..5),
-      content: content[rand(content.length)]
+      score: content[n],
+      content: content[n+1]
     }
     ]
     )
