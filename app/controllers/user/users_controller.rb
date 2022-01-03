@@ -31,9 +31,8 @@ class User::UsersController < ApplicationController
 
   def favorites
     @user = User.find(params[:id])
-    favorites = @user.favorites
     @shops = []
-    favorites.each do |favorite|
+    @user.favorites.each do |favorite|
       @shops << favorite.shop
     end
   end
