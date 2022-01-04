@@ -77,7 +77,7 @@ end
 score = ["1","2","3","4","5"]
 content = ["とても悪かった","微妙だった","普通だった","良かった","とても良かった"]
 for i in 1..1000 do
-  n = rand_num.sample.to_i
+  n = score.sample.to_i
   Review.create(
     [
     {
