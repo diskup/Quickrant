@@ -74,8 +74,8 @@ for i in 1..300 do
       ]
     )
 end
-rand_num = ["0","2","4","6","8"]
-content = ["1","とても悪かった","2","微妙だった","3","普通だった","4","良かった","5","とても良かった"]
+score = ["1","2","3","4","5"]
+content = ["とても悪かった","微妙だった","普通だった","良かった","とても良かった"]
 for i in 1..1000 do
   n = rand_num.sample.to_i
   Review.create(
@@ -83,8 +83,8 @@ for i in 1..1000 do
     {
       user_id: rand(1..20),
       shop_id: rand(1..300),
-      score: content[n],
-      content: content[n+1]
+      score: n,
+      content: content[n-1]
     }
     ]
     )
